@@ -1,0 +1,104 @@
+<!--
+Copyright 2016 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="state-aware.html">
+<link rel="import" href="state-mutator.html">
+
+
+<script type="text/javascript" type="text/ecmascript-6">
+
+  UniFlow = UniFlow || {};
+
+/**
+ Use UniFlow.ActionDispatcher for non-visual elements that process actions emitted by visual
+ elements. Action dispatchers usually placed at the application level. Each action dispatcher
+ element gets a chance to process the action in the order the elements are present in the
+ DOM tree. It is important that action dispatcher elements get two-way data binding to
+ application state as follows:
+
+    <action-dispatcher state="{{state}}"></action-dispatcher>
+
+ Action dispatcher elements can include nested action dispatchers, so you can have a
+ hierarchical organization of action dispatchers.
+
+ ### Example:
+
+ #### HTML:
+
+    <dom-module id="parent-dispatcher">
+      <template>
+        <child-dispatcher-a state="{{state}}"></child-dispatcher-a>
+        <child-dispatcher-b state="{{state}}"></child-dispatcher-b>
+      </template>
+    </dom-module>
+
+ #### JavaScript:
+
+     Polymer({
+       is: 'parent-dispatcher',
+
+       behaviors: [
+         UniFlow.ActionDispatcher
+       ],
+
+       MY_ACTION(detail) {
+         // do MY_ACTION processing here
+         // return false if you want to prevent other action dispatchers from
+         // further processing of this action
+       };
+     });
+
+ @polymerBehavior UniFlow.ActionDispatcher
+*/
+
+  UniFlow.ActionDispatcherImpl = {
+
+    hostAttributes: {
+      'action-dispatcher': true
+    },
+
+    /**
+     * Dispatches action by invoking the method with the name that matches
+     * action type (`detail.type`) passing detail object as a parameter;
+     * also selects all children action dispatchers in the element's DOM tree and
+     * invokes dispatchAction method on them. False returned by an action dispatcher method
+     * results in dispatchAction method returning false (which in turn stops further processing
+     * of the action by other action dispatchers).
+     *
+     * @param {{type: string}} detail
+     * @return {boolean}
+     */
+    dispatchAction(detail) {
+      if (this[detail.type] && typeof this[detail.type] === 'function') {
+        if (this[detail.type](detail) === false) {
+          return false;
+        }
+      }
+      return Polymer.dom(this.root).querySelectorAll('[action-dispatcher]')
+          .every((element) => element.dispatchAction(detail) !== false);
+    }
+
+  };
+
+  /** @polymerBehavior */
+  UniFlow.ActionDispatcher = [
+    UniFlow.StateAware,
+    UniFlow.StateMutator,
+    UniFlow.ActionDispatcherImpl
+  ];
+
+</script>
