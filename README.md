@@ -4,7 +4,7 @@ Set of behaviors to enable uni-directional data flow in Polymer application.
 
 **Important!**
 
-This library was developed as part of internal project at Google and isn't directly affiliated with the Polymer project (although Polymer team has provided some good feedback on UniFlow implementation).
+*This library was developed as part of internal project at Google and isn't directly affiliated with the Polymer project (although Polymer team has provided some good feedback on UniFlow implementation).*
 
 ## History & Overview
 
