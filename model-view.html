@@ -20,7 +20,7 @@ limitations under the License.
 
 <script>
 
-  UniFlow = UniFlow || {};
+  window.UniFlow = window.UniFlow || {};
 
 /**
 
@@ -126,7 +126,7 @@ limitations under the License.
 
  @polymerBehavior UniFlow.ModelView
 */
-  UniFlow.ModelViewImpl = {
+  window.UniFlow.ModelViewImpl = {
 
     properties: {
 
@@ -268,14 +268,18 @@ limitations under the License.
         });
         this.initValidationStatus_();
       } else {
-        this.set('status.isModified', true);
+        if (this.get('model')) {
+          this.set('status.isModified', true);
+        } else {
+          this.set('status', {});
+        }
       }
     }
 
   };
 
   /** @polymerBehavior */
-  UniFlow.ModelView = [
+  window.UniFlow.ModelView = [
     UniFlow.ActionEmitter,
     UniFlow.ModelViewImpl
   ];

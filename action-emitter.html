@@ -19,7 +19,7 @@ limitations under the License.
 
 <script>
 
-  UniFlow = UniFlow || {};
+  window.UniFlow = window.UniFlow || {};
 
 /**
  Whenever element needs to emit an action, this behavior should be used.
@@ -27,7 +27,7 @@ limitations under the License.
 
  @polymerBehavior
 */
-  UniFlow.ActionEmitter = {
+  window.UniFlow.ActionEmitter = {
 
     /**
      * Fired when action is emitted to be processed by action dispatcher.
@@ -45,7 +45,7 @@ limitations under the License.
      * ensure that `state` property is initialized (for state-aware elements) before
      * emitting any actions (as `state` property is initialized on attach).
      *
-     * @param {{type: string}} detail
+     * @param {*} detail
      */
     emitAction: function(detail) {
       if (detail.path && this.statePath) {
