@@ -1,0 +1,35 @@
+{
+  "name": "uniflow-polymer",
+  "version": "0.5.0",
+  "authors": [
+    "Andrei Militeev <militeev@gmail.com>"
+  ],
+  "description": "A straightforward way to architect Polymer application using unidirectional data flow.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "uniflow",
+    "unidirectional",
+    "flow"
+  ],
+  "license": "https://raw.githubusercontent.com/google/uniflow-polymer/master/LICENSE",
+  "homepage": "https://github.com/google/uniflow-polymer/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.5.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "iron-icon": "PolymerElements/iron-icon#^1.0.0",
+    "iron-icons": "PolymerElements/iron-icons#^1.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
+    "paper-styles": "PolymerElements/paper-styles#^1.0.0",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+    "web-component-tester": "^5.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}
