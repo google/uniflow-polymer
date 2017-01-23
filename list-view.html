@@ -20,7 +20,7 @@ limitations under the License.
 
 <script type="text/javascript" type="text/ecmascript-6">
 
-  window.UniFlow = window.UniFlow || {};
+  var UniFlow = window.UniFlow || {};
 
 /**
 
@@ -73,7 +73,7 @@ limitations under the License.
 
  @polymerBehavior UniFlow.ListView
 */
-  window.UniFlow.ListViewImpl = {
+  UniFlow.ListViewImpl = {
     properties: {
 
       /**
@@ -160,7 +160,7 @@ limitations under the License.
   };
 
   /** @polymerBehavior */
-  window.UniFlow.ListView = [
+  UniFlow.ListView = [
     UniFlow.ActionEmitter,
     UniFlow.ListViewImpl
   ];

@@ -22,7 +22,7 @@ limitations under the License.
 
 <script type="text/javascript" type="text/ecmascript-6">
 
-  window.UniFlow = window.UniFlow || {};
+  var UniFlow = window.UniFlow || {};
 
 /**
 
@@ -85,7 +85,7 @@ limitations under the License.
 */
 
 
-  window.UniFlow.ApplicationStateImpl = {
+  UniFlow.ApplicationStateImpl = {
 
     observers: [
       'stateChanged_(state.*)'
@@ -164,7 +164,7 @@ limitations under the License.
   };
 
   /** @polymerBehavior */
-  window.UniFlow.ApplicationState = [
+  UniFlow.ApplicationState = [
     UniFlow.StateAware,
     UniFlow.StateMutator,
     UniFlow.ActionDispatcher,

@@ -21,7 +21,7 @@ limitations under the License.
 
 <script type="text/javascript" type="text/ecmascript-6">
 
-  window.UniFlow = window.UniFlow || {};
+  var UniFlow = window.UniFlow || {};
 
 /**
  Use UniFlow.ActionDispatcher for non-visual elements that process actions emitted by visual
@@ -65,7 +65,7 @@ limitations under the License.
  @polymerBehavior UniFlow.ActionDispatcher
 */
 
-  window.UniFlow.ActionDispatcherImpl = {
+  UniFlow.ActionDispatcherImpl = {
 
     hostAttributes: {
       'action-dispatcher': true
@@ -95,7 +95,7 @@ limitations under the License.
   };
 
   /** @polymerBehavior */
-  window.UniFlow.ActionDispatcher = [
+  UniFlow.ActionDispatcher = [
     UniFlow.StateAware,
     UniFlow.StateMutator,
     UniFlow.ActionDispatcherImpl

@@ -19,7 +19,7 @@ limitations under the License.
 
 <script>
 
-  window.UniFlow = window.UniFlow || {};
+  var UniFlow = window.UniFlow || {};
 
 /**
  Whenever element needs to emit an action, this behavior should be used.
@@ -27,7 +27,7 @@ limitations under the License.
 
  @polymerBehavior
 */
-  window.UniFlow.ActionEmitter = {
+  UniFlow.ActionEmitter = {
 
     /**
      * Fired when action is emitted to be processed by action dispatcher.

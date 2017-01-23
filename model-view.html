@@ -20,7 +20,7 @@ limitations under the License.
 
 <script>
 
-  window.UniFlow = window.UniFlow || {};
+  var UniFlow = window.UniFlow || {};
 
 /**
 
@@ -126,7 +126,7 @@ limitations under the License.
 
  @polymerBehavior UniFlow.ModelView
 */
-  window.UniFlow.ModelViewImpl = {
+  UniFlow.ModelViewImpl = {
 
     properties: {
 
@@ -279,7 +279,7 @@ limitations under the License.
   };
 
   /** @polymerBehavior */
-  window.UniFlow.ModelView = [
+  UniFlow.ModelView = [
     UniFlow.ActionEmitter,
     UniFlow.ModelViewImpl
   ];
