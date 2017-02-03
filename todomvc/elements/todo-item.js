@@ -40,7 +40,9 @@ Polymer({
   },
 
   onInputBlur(e) {
-    this._confirmEdit();
+    if (this.isEditing) {
+      this._confirmEdit();
+    }
   },
 
   _confirmEdit() {
