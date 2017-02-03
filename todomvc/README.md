@@ -10,6 +10,6 @@ Run `bower install`
 
 Make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed.
 
-## Running the Application
+## Run the Application
 
 Run `polymer serve` to serve your application locally.
