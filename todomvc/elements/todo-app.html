@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/uniflow-polymer/action-emitter.html">
+<link rel="import" href="../bower_components/uniflow-polymer/application-state.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/iron-localstorage/iron-localstorage.html">
+
+<link rel="import" href="todo-header.html">
+<link rel="import" href="todo-items.html">
+<link rel="import" href="todo-footer.html">
+<link rel="import" href="todo-action-dispatcher.html">
+
+<link rel="import" href="todo-styles.html">
+
+<dom-module id="todo-app">
+  <template>
+    <style is="custom-style" include="todo-styles">
+    </style>
+
+    <todo-action-dispatcher state="{{state}}"></todo-action-dispatcher>
+    <section class="todoapp">
+      <app-location route="{{route}}" use-hash-as-path></app-location>
+      <app-route route="{{route}}"
+                 pattern="/:filterBy"
+                 data="{{routeData}}"></app-route>
+      <iron-localstorage name="todo-list"
+                         value="{{state.todoList}}"
+                         on-iron-localstorage-load-empty="onStorageLoadEmpty"
+                         on-iron-localstorage-load="onStorageLoad">
+      </iron-localstorage>
+      <todo-header></todo-header>
+      <template is="dom-if" if="[[state.todoList.length]]">
+        <!-- This section should be hidden by default and shown when there are todos -->
+        <todo-items id="list"
+                    class="main"
+                    list="[[state.todoList]]"
+                    filter-by="[[routeData.filterBy]]">
+        </todo-items>
+        <!-- This footer should hidden by default and shown when there are todos -->
+        <todo-footer filter-by="[[routeData.filterBy]]">
+        </todo-footer>
+      </template>
+    </section>
+
+  </template>
+</dom-module>
+
+<script src="todo-app.js"></script>

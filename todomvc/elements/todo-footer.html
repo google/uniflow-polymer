@@ -1,0 +1,47 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/uniflow-polymer/action-emitter.html">
+<link rel="import" href="../bower_components/uniflow-polymer/state-aware.html">
+
+<link rel="import" href="todo-styles.html">
+
+<dom-module id="todo-footer">
+  <template>
+    <style is="custom-style" include="todo-styles">
+
+      .filters li a:hover {
+        border-color: rgba(175, 47, 47, 0.1);
+      }
+
+      .filters li a[selected] {
+        border-color: rgba(175, 47, 47, 0.2);
+      }
+
+    </style>
+
+    <footer class="footer">
+      <span class="todo-count">
+        <strong>[[state.activeCount]]</strong>
+        item<span hidden$="[[isEqual(state.activeCount, 1)]]">s</span> left
+      </span>
+      <ul class="filters">
+        <li>
+          <a selected$="[[!filterBy]]" href="#/">All</a>
+        </li>
+        <li>
+          <a selected$="[[isEqual(filterBy, 'active')]]" href="#/active">Active</a>
+        </li>
+        <li>
+          <a selected$="[[isEqual(filterBy, 'completed')]]" href="#/completed">Completed</a>
+        </li>
+      </ul>
+      <!-- Hidden if no completed items are left -->
+      <template is="dom-if" if="[[completedCount]]">
+        <button class="clear-completed"
+                on-tap="onClearCompletedButtonTap">Clear completed</button>
+      </template>
+    </footer>
+
+  </template>
+</dom-module>
+
+<script src="todo-footer.js"></script>

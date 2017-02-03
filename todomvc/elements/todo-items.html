@@ -1,0 +1,40 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/uniflow-polymer/list-view.html">
+
+<link rel="import" href="todo-item.html">
+
+<link rel="import" href="todo-styles.html">
+
+<dom-module id="todo-items">
+  <template>
+    <style is="custom-style" include="todo-styles">
+
+      :host {
+        display: block;
+      }
+
+      todo-item {
+        border-top: 1px solid #ededed;
+      }
+
+      todo-item:first-child {
+        border-top: none;
+      }
+
+    </style>
+
+    <ul class="todo-list">
+      <template is="dom-repeat"
+                id="list-template"
+                items="[[list]]"
+                as="todoItem"
+                filter="[[filterList(filterBy)]]"
+                observe="completed">
+        <todo-item model="[[todoItem]]"></todo-item>
+      </template>
+    </ul>
+
+  </template>
+</dom-module>
+
+<script src="todo-items.js"></script>
