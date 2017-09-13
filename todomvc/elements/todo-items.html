@@ -1,5 +1,5 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/uniflow-polymer/list-view.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../list-view.html">
 
 <link rel="import" href="todo-item.html">
 
@@ -7,9 +7,8 @@
 
 <dom-module id="todo-items">
   <template>
-    <style is="custom-style" include="todo-styles">
-
-      :host {
+    <style include="todo-styles">
+       :host {
         display: block;
       }
 
@@ -20,21 +19,46 @@
       todo-item:first-child {
         border-top: none;
       }
-
     </style>
 
-    <ul class="todo-list">
-      <template is="dom-repeat"
-                id="list-template"
-                items="[[list]]"
-                as="todoItem"
-                filter="[[filterList(filterBy)]]"
-                observe="completed">
-        <todo-item model="[[todoItem]]"></todo-item>
-      </template>
-    </ul>
-
+    <section class="main">
+      <input id="ta" class="toggle-all" type="checkbox" checked="[[state.allCompleted]]" on-change="onAllCompletedChange">
+      <label for="ta">Mark all as complete</label>
+      <ul class="todo-list">
+        <template is="dom-repeat" id="list-template" items="[[list]]" as="todoItem" filter="[[filterList(filterBy)]]" observe="completed">
+          <todo-item model="[[todoItem]]"></todo-item>
+        </template>
+      </ul>
+    </section>
   </template>
-</dom-module>
+  <script>
+    class TodoItems extends UniFlow.ListView(Polymer.Element) {
+      static get is() {
+        return 'todo-items';
+      }
 
-<script src="todo-items.js"></script>
+      filterList(filterBy) {
+        return function (item) {
+          switch (filterBy) {
+            case 'active':
+              return !item.completed;
+            case 'completed':
+              return item.completed;
+            default:
+              return true;
+          }
+        };
+      }
+
+      onAllCompletedChange(event) {
+        this.emitAction({
+          type: todo.actions.SELECTION_CHANGED,
+          applyToAll: true,
+          value: event.target.checked
+        })
+      }
+    }
+
+    customElements.define(TodoItems.is, TodoItems);
+  </script>
+</dom-module>

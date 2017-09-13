@@ -15,47 +15,44 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <html>
+
 <head>
   <meta charset="UTF-8">
-  <title>paper-toolbar basic tests</title>
+  <title>UniFlow.ListView tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
 
-  <link rel="import" href="../../uniflow-polymer/list-view.html">
+  <link rel="import" href="../list-view.html">
 
 </head>
+
 <body>
 
   <dom-module id="list-view-test">
     <script>
-      Polymer({
-        is: 'list-view-test',
-        behaviors: [
-          UniFlow.ListView,
-        ],
-      });
+      class ListViewTest extends UniFlow.ListView(Polymer.Element) {
+        static get is() {
+          return 'list-view-test';
+        }
+      }
+
+      customElements.define(ListViewTest.is, ListViewTest);
     </script>
   </dom-module>
-
-  <test-fixture id="basic">
-    <template is="dom-template">
-      <list-view-test list="[[list]]">
-      </list-view-test>
-    </template>
-  </test-fixture>
 
   <script>
     'use strict';
 
     suite('UniFlow.ListView', () => {
 
-      let listView, list;
+      let listl, listView;
 
       setup(() => {
-        list = [];
-        listView = fixture('basic', {list});
+        listView = document.createElement("list-view-test");
+        listView.list = []; 
+        document.body.appendChild(listView);
       });
 
       test('is ok', () => {
@@ -64,19 +61,25 @@ limitations under the License.
 
       test('updates selected count on new list', () => {
         sinon.spy(listView, 'updateSelectedCount_');
-        listView.set('list', [{foo: 'bar'}]);
+        listView.set('list', [{
+          foo: 'bar'
+        }]);
         expect(listView.updateSelectedCount_).to.be.called;
       });
 
       test('updates selected count on element added/removed', () => {
         sinon.spy(listView, 'updateSelectedCount_');
-        listView.push('list', {foo: 'bar'});
+        listView.push('list', {
+          foo: 'bar'
+        });
         listView.splice('list', 0, 1);
         expect(listView.updateSelectedCount_).to.be.calledTwice;
       });
 
       test('updates selected count on $selected changed', () => {
-        listView.set('list', [{foo: 'bar'}]);
+        listView.set('list', [{
+          foo: 'bar'
+        }]);
         sinon.spy(listView, 'updateSelectedCount_');
         listView.set(['list', 0, '$selected'], true);
         listView.set(['list', 0, '$selected'], false);
@@ -84,9 +87,14 @@ limitations under the License.
       });
 
       test('calculates selectedCount', () => {
-        listView.set('list', [
-          {foo: 'bar', $selected: true},
-          {foo: 'baz', $selected: false},
+        listView.set('list', [{
+            foo: 'bar',
+            $selected: true
+          },
+          {
+            foo: 'baz',
+            $selected: false
+          },
           {},
         ]);
         expect(listView.selectedCount).to.equal(1);
@@ -94,16 +102,24 @@ limitations under the License.
 
       test('emits delete action for selected', () => {
         sinon.spy(listView, 'emitAction');
-        listView.set('list', [
-          {foo: 'bar', $selected: true},
-          {foo: 'baz', $selected: false},
+        listView.set('list', [{
+            foo: 'bar',
+            $selected: true
+          },
+          {
+            foo: 'baz',
+            $selected: false
+          },
           {},
         ]);
         listView.deleteSelected('DELETE');
         expect(listView.emitAction).to.be.calledOnce;
         expect(listView.emitAction).to.be.calledWith({
           type: 'DELETE',
-          item: {foo: 'bar', $selected: true}
+          item: {
+            foo: 'bar',
+            $selected: true
+          }
         });
       });
 
@@ -111,4 +127,5 @@ limitations under the License.
   </script>
 
 </body>
+
 </html>

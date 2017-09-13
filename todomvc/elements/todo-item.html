@@ -1,13 +1,13 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/uniflow-polymer/model-view.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="../../model-view.html">
 
 <link rel="import" href="todo-styles.html">
 
 <dom-module id="todo-item">
   <template>
-    <style is="custom-style" include="todo-styles">
-
-      :host {
+    <style include="todo-styles">
+       :host {
         display: block;
       }
 
@@ -40,7 +40,8 @@
         position: absolute;
         top: 9px;
         margin: auto 0;
-        border: none; /* Mobile Safari */
+        border: none;
+        /* Mobile Safari */
         -webkit-appearance: none;
         appearance: none;
       }
@@ -105,26 +106,87 @@
       li .toggle:checked:after {
         content: url('../resources/checked.svg');
       }
-
     </style>
 
     <li completed$="[[model.completed]]" editing$="[[isEditing]]">
       <div class="view">
-        <input class="toggle"
-               type="checkbox"
-               checked="[[model.completed]]"
-               on-change="onCompletedChange">
+        <input class="toggle" type="checkbox" checked="[[model.completed]]" on-change="onCompletedChange">
         <label on-dblclick="onViewDblClick">[[model.text]]</label>
         <button class="destroy" on-tap="onDestroyTap"></button>
       </div>
-      <input id="text-input"
-             class="edit"
-             hidden="[[!isEditing]]"
-             on-blur="onInputBlur"
-             on-keydown="onInputKeyDown">
+      <input id="text-input" class="edit" hidden="[[!isEditing]]" on-blur="onInputBlur" on-keydown="onInputKeyDown">
     </li>
-
   </template>
-</dom-module>
+  <script>
+    class TodoItem extends UniFlow.ModelView(Polymer.GestureEventListeners(Polymer.Element)) {
 
-<script src="todo-item.js"></script>
+      static get is() {
+        return 'todo-item';
+      }
+
+
+      static get properties() {
+        return {
+          filterBy: String,
+          isEditing: {
+            type: Boolean,
+            value: false
+          }
+        }
+      }
+
+      onCompletedChange(e) {
+        this.emitAction({
+          type: todo.actions.SELECTION_CHANGED,
+          model: this.model,
+          completed: e.target.checked
+        });
+      }
+
+      _removeTodo() {
+        this.emitAction({
+          type: todo.actions.REMOVE_TODO,
+          model: this.model
+        });
+      }
+
+      onDestroyTap(e) {
+        this._removeTodo();
+      }
+
+      onViewDblClick(e) {
+        this.$['text-input'].value = this.model.text;
+        this.isEditing = true;
+        this.$['text-input'].focus();
+      }
+
+      onInputBlur(e) {
+        if (this.isEditing) {
+          this._confirmEdit();
+        }
+      }
+
+      _confirmEdit() {
+        this.emitAction({
+          type: todo.actions.UPDATE_TODO,
+          model: this.model,
+          text: this.$['text-input'].value
+        });
+        this.isEditing = false;
+        if (!this.model.text.trim()) {
+          this._removeTodo();
+        }
+      }
+
+      onInputKeyDown(e) {
+        if (e.keyCode == 13) {
+          this.$['text-input'].blur();
+        } else if (e.keyCode == 27) {
+          this.isEditing = false;
+        }
+      }
+    }
+
+    customElements.define(TodoItem.is, TodoItem);
+  </script>
+</dom-module>

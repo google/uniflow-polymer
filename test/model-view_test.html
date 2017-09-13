@@ -15,42 +15,48 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <html>
+
 <head>
   <meta charset="UTF-8">
-  <title>paper-toolbar basic tests</title>
+  <title>UniFlow.ModelView tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
 
-  <link rel="import" href="../../uniflow-polymer/model-view.html">
+  <link rel="import" href="../model-view.html">
 
 </head>
+
 <body>
 
   <dom-module id="model-view-test">
     <script>
-      Polymer({
-        is: 'model-view-test',
-        behaviors: [
-          UniFlow.ModelView,
-        ],
-        saveAction: 'SAVE',
-        validation: {
-          'foo': (value) => !value ? 'bad foo' : '',
-          'xxx': (value) => value == 'yyy' ? 123 : ''
-        },
-        getMessage: (code) => code === 123 ? 'error 123' : ''
-      });
+      class ModelViewTest extends UniFlow.ModelView(Polymer.Element) {
+        static get is() {
+          return 'model-view-test';
+        }
+        
+        constructor() {
+          super();
+          this.validation = {
+            'foo': (value) => !value ? 'bad foo' : '',
+            'xxx': (value) => value == 'yyy' ? 123 : ''
+          };
+        }
+        
+        get saveAction() {
+          return 'SAVE';
+        }
+
+        getMessage(code) {
+          return code === 123 ? 'error 123' : '';
+        }
+      }
+
+      customElements.define(ModelViewTest.is, ModelViewTest);
     </script>
   </dom-module>
-
-  <test-fixture id="basic">
-    <template is="dom-template">
-      <model-view-test model="[[model]]">
-      </model-view-test>
-    </template>
-  </test-fixture>
 
   <script>
     'use strict';
@@ -60,9 +66,15 @@ limitations under the License.
       let modelView, model, status;
 
       setup(() => {
-        model = {foo: 'bar'};
+        modelView = document.createElement("model-view-test");
+        document.body.appendChild(modelView);
+
+        model = {
+          foo: 'bar'
+        };
         status = {};
-        modelView = fixture('basic', {model, status});
+        
+        modelView.model = model;
       });
 
       test('is ok', () => {
@@ -91,7 +103,10 @@ limitations under the License.
 
       test('saves model with custom action', () => {
         sinon.spy(modelView, 'emitAction');
-        modelView.saveModel({type: 'XXX', path: 'my.model'});
+        modelView.saveModel({
+          type: 'XXX',
+          path: 'my.model'
+        });
         expect(modelView.emitAction).to.be.calledWith({
           model,
           path: 'my.model',
@@ -101,8 +116,14 @@ limitations under the License.
 
       test('initializes validation status', () => {
         modelView.initValidationStatus_();
-        expect(modelView.get('status.validation')).to.deep.equal(
-            {foo: {invalid: false}, xxx: {invalid: false}});
+        expect(modelView.get('status.validation')).to.deep.equal({
+          foo: {
+            invalid: false
+          },
+          xxx: {
+            invalid: false
+          }
+        });
       });
 
       test('validates model when validation not specified', () => {
@@ -112,23 +133,34 @@ limitations under the License.
 
       test('validates model to true', () => {
         expect(modelView.validateModel()).to.be.true;
-        expect(modelView.get('status.validation')).to.deep.equal(
-            {foo: {invalid: false, errorMessage: ''},
-              xxx: {invalid: false, errorMessage: ''}});
+        expect(modelView.get('status.validation')).to.deep.equal({
+          foo: {
+            invalid: false,
+            errorMessage: ''
+          },
+          xxx: {
+            invalid: false,
+            errorMessage: ''
+          }
+        });
       });
 
       test('validates model to false with error text', () => {
         modelView.set('model.foo', '');
         expect(modelView.validateModel()).to.be.false;
-        expect(modelView.get('status.validation.foo')).to.deep.equal(
-            {invalid: true, errorMessage: 'bad foo'});
+        expect(modelView.get('status.validation.foo')).to.deep.equal({
+          invalid: true,
+          errorMessage: 'bad foo'
+        });
       });
 
       test('validates model to false with error code', () => {
         modelView.set('model.xxx', 'yyy');
         expect(modelView.validateModel()).to.be.false;
-        expect(modelView.get('status.validation.xxx')).to.deep.equal(
-            {invalid: true, errorMessage: 'error 123'});
+        expect(modelView.get('status.validation.xxx')).to.deep.equal({
+          invalid: true,
+          errorMessage: 'error 123'
+        });
       });
 
       test('validates to true and saves', () => {
@@ -146,13 +178,19 @@ limitations under the License.
 
       test('handles model change', () => {
         sinon.spy(modelView, 'initValidationStatus_');
-        modelView.set('model', {foo: 'bar'});
+        modelView.set('model', {
+          foo: 'bar'
+        });
         expect(modelView.initValidationStatus_).to.have.been.called;
         expect(modelView.get('status')).to.deep.equal({
           isModified: false,
           validation: {
-            foo: {invalid: false},
-            xxx: {invalid: false}
+            foo: {
+              invalid: false
+            },
+            xxx: {
+              invalid: false
+            }
           }
         });
       });
@@ -175,4 +213,5 @@ limitations under the License.
   </script>
 
 </body>
+
 </html>
