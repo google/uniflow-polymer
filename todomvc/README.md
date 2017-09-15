@@ -1,6 +1,6 @@
 # \<todo\>
 
-ToDo MVC application implemented with UniFlow for Polymer
+ToDo MVC application implemented with UniFlow for Polymer 2.x
 
 ## Install Bower Dependencies
 

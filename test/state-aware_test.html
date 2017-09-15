@@ -15,27 +15,30 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <html>
+
 <head>
   <meta charset="UTF-8">
-  <title>paper-toolbar basic tests</title>
+  <title>UniFlow.StateAware tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
 
-  <link rel="import" href="../../uniflow-polymer/state-aware.html">
+  <link rel="import" href="../state-aware.html">
 
 </head>
+
 <body>
 
   <dom-module id="state-aware-test">
     <script>
-      Polymer({
-        is: 'state-aware-test',
-        behaviors: [
-          UniFlow.StateAware,
-        ],
-      });
+      class StateAwareTest extends UniFlow.StateAware(Polymer.Element) {
+        static get is() {
+          return 'state-aware-test';
+        }
+      }
+
+      customElements.define(StateAwareTest.is, StateAwareTest);
     </script>
   </dom-module>
 
@@ -63,18 +66,18 @@ limitations under the License.
 
       test('added to application.stateAwareElements', () => {
         expect(stateAware.get('application.stateAwareElements')).to.deep.equal(
-            [stateAware]);
+          [stateAware]);
       });
 
       test('removed from application.stateAwareElements', () => {
         stateAware.parentNode.removeChild(stateAware);
         expect(stateAware.get('application.stateAwareElements'))
-            .to.deep.equal([]);
+          .to.deep.equal([]);
       });
 
       test('added to application.stateAwareElements', () => {
         sinon.stub(stateAware, 'get').withArgs('application.element')
-            .returns('my-app');
+          .returns('my-app');
         expect(stateAware.getApplication()).to.equal('my-app');
       });
 
@@ -82,4 +85,5 @@ limitations under the License.
   </script>
 
 </body>
+
 </html>

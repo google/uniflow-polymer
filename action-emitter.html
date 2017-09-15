@@ -14,48 +14,53 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="bower_components/polymer/polymer-element.html">
 
 
 <script>
-
   var UniFlow = window.UniFlow || {};
 
-/**
- Whenever element needs to emit an action, this behavior should be used.
- Action object must always include type property.
+  /**
+   Whenever element needs to emit an action, this mixin should be applied.
+   Action object must always include type property.
 
- @polymerBehavior
-*/
-  UniFlow.ActionEmitter = {
+   @polymer
+   @mixinFunction
+  */
+  UniFlow.ActionEmitter = Polymer.dedupingMixin((base) =>
+    class extends base {
 
-    /**
-     * Fired when action is emitted to be processed by action dispatcher.
-     *
-     * @event dispatch-action
-     */
+      /**
+       * Fired when action is emitted to be processed by action dispatcher.
+       *
+       * @event dispatch-action
+       */
 
-    /**
-     * Emits the action described by detail parameter. Detail object must always
-     * include type property. To emit the action we use Polymer custom event
-     * mechanism. Application element listens to the `dispatch-action` event and
-     * invokes `dispatchAction` methods for all action dispatchers associated with
-     * the application. Make sure your element is attached to DOM tree, otherwise
-     * event will never reach your application element. It is a good practice to
-     * ensure that `state` property is initialized (for state-aware elements) before
-     * emitting any actions (as `state` property is initialized on attach).
-     *
-     * @param {*} detail
-     */
-    emitAction: function(detail) {
-      if (detail.path && this.statePath) {
-        if (!detail.path.startsWith('state.')) {
-          detail.path = this.statePath + '.' + detail.path;
+      /**
+       * Emits the action described by detail parameter. Detail object must always
+       * include type property. To emit the action we use custom event
+       * mechanism. Application element listens to the `dispatch-action` event and
+       * invokes `dispatchAction` methods for all action dispatchers associated with
+       * the application. Make sure your element is attached to DOM tree, otherwise
+       * event will never reach your application element. It is a good practice to
+       * ensure that `state` property is initialized (for state-aware elements) before
+       * emitting any actions (as `state` property is initialized on attach).
+       *
+       * @param {*} detail
+       */
+      emitAction(detail) {
+        if (detail.path && this.statePath) {
+          if (!detail.path.startsWith('state.')) {
+            detail.path = this.statePath + '.' + detail.path;
+          }
         }
+        
+        this.dispatchEvent(new CustomEvent('dispatch-action', {
+          detail: detail,
+          bubbles: true,
+          composed: true
+        }));
       }
-      this.fire('dispatch-action', detail);
-    }
 
-  };
-
+    });
 </script>

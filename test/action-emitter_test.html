@@ -15,27 +15,30 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <html>
+
 <head>
   <meta charset="UTF-8">
-  <title>paper-toolbar basic tests</title>
+  <title>UniFlow.ActionEmitter tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-  <script src="../../web-component-tester/browser.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../bower_components/web-component-tester/browser.js"></script>
 
-  <link rel="import" href="../../uniflow-polymer/action-emitter.html">
+  <link rel="import" href="../action-emitter.html">
 
 </head>
+
 <body>
 
   <dom-module id="action-emitter-test">
     <script>
-      Polymer({
-        is: 'action-emitter-test',
-        behaviors: [
-          UniFlow.ActionEmitter,
-        ],
-      });
+      class ActionEmitterTest extends UniFlow.ActionEmitter(Polymer.Element) {
+        static get is() {
+          return 'action-emitter-test';
+        }
+      }
+
+      customElements.define(ActionEmitterTest.is, ActionEmitterTest);
     </script>
   </dom-module>
 
@@ -61,29 +64,42 @@ limitations under the License.
       });
 
       test('fires a dispatch-action event on action emit', () => {
-        sinon.spy(actionEmitter, 'fire');
+        sinon.spy(actionEmitter, 'dispatchEvent');
         let action = 'detail';
         actionEmitter.emitAction(action);
-        expect(actionEmitter.fire).to.be.calledWith('dispatch-action', action);
+        expect(actionEmitter.dispatchEvent).to.be.calledWithMatch({
+          type: 'dispatch-action',
+          detail: action
+        });
       });
 
       test('prepends statePath to detail.path', () => {
-        sinon.spy(actionEmitter, 'fire');
-        let action = {path: 'my.path'};
+        sinon.spy(actionEmitter, 'dispatchEvent');
+        let action = {
+          path: 'my.path'
+        };
         actionEmitter.statePath = 'state';
         actionEmitter.emitAction(action);
-        expect(actionEmitter.fire).to.be.calledWith('dispatch-action', {
-          path: 'state.my.path'
+        expect(actionEmitter.dispatchEvent).to.be.calledWithMatch({
+          type: 'dispatch-action',
+          detail: {
+            path: 'state.my.path'
+          }
         });
       });
 
       test('does not change detail.path if it starts with "state."', () => {
-        sinon.spy(actionEmitter, 'fire');
-        let action = {path: 'state.my.path'};
+        sinon.spy(actionEmitter, 'dispatchEvent');
+        let action = {
+          path: 'state.my.path'
+        };
         actionEmitter.statePath = 'some.state.path';
         actionEmitter.emitAction(action);
-        expect(actionEmitter.fire).to.be.calledWith('dispatch-action', {
-          path: 'state.my.path'
+        expect(actionEmitter.dispatchEvent).to.be.calledWithMatch({
+          type: 'dispatch-action',
+          detail: {
+            path: 'state.my.path'
+          }
         });
       });
 
@@ -91,4 +107,5 @@ limitations under the License.
   </script>
 
 </body>
+
 </html>
