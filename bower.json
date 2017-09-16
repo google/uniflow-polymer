@@ -22,6 +22,7 @@
     "polymer": "Polymer/polymer#^2.0.0"
   },
   "devDependencies": {
+    "app-route": "PolymerElements/app-route#^2.0.2",
     "iron-component-page": "PolymerElements/iron-component-page#^3.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
     "iron-icon": "PolymerElements/iron-icon#^2.0.0",
@@ -30,6 +31,7 @@
     "paper-styles": "PolymerElements/paper-styles#^2.0.0",
     "test-fixture": "PolymerElements/test-fixture#3.0.0-rc.1",
     "web-component-tester": "^v6.0.0",
-    "todomvc-app-css": "^2.1.0"
+    "todomvc-app-css": "^2.1.0",
+    "iron-localstorage": "PolymerElements/iron-localstorage#^2.0.0"
   }
 }
