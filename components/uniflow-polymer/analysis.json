@@ -1,896 +1,5 @@
 {
   "schema_version": "1.0.0",
-  "elements": [
-    {
-      "description": "",
-      "summary": "",
-      "path": "todomvc/elements/todo-header.html",
-      "properties": [],
-      "methods": [
-        {
-          "name": "onInputKeyDown",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 30,
-              "column": 6
-            },
-            "end": {
-              "line": 38,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ]
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 19,
-          "column": 4
-        },
-        "end": {
-          "line": 39,
-          "column": 5
-        }
-      },
-      "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "TodoHeader",
-      "attributes": [],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "todo-header"
-    },
-    {
-      "description": "",
-      "summary": "",
-      "path": "todomvc/elements/todo-item.html",
-      "properties": [
-        {
-          "name": "filterBy",
-          "type": "string",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 129,
-              "column": 10
-            },
-            "end": {
-              "line": 129,
-              "column": 26
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "isEditing",
-          "type": "boolean",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 130,
-              "column": 10
-            },
-            "end": {
-              "line": 133,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "false"
-        }
-      ],
-      "methods": [
-        {
-          "name": "onCompletedChange",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 137,
-              "column": 6
-            },
-            "end": {
-              "line": 143,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ]
-        },
-        {
-          "name": "_removeTodo",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 145,
-              "column": 6
-            },
-            "end": {
-              "line": 150,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
-          "name": "onDestroyTap",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 152,
-              "column": 6
-            },
-            "end": {
-              "line": 154,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ]
-        },
-        {
-          "name": "onViewDblClick",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 156,
-              "column": 6
-            },
-            "end": {
-              "line": 160,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ]
-        },
-        {
-          "name": "onInputBlur",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 162,
-              "column": 6
-            },
-            "end": {
-              "line": 166,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ]
-        },
-        {
-          "name": "_confirmEdit",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 168,
-              "column": 6
-            },
-            "end": {
-              "line": 178,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
-          "name": "onInputKeyDown",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 180,
-              "column": 6
-            },
-            "end": {
-              "line": 186,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ]
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 120,
-          "column": 4
-        },
-        "end": {
-          "line": 187,
-          "column": 5
-        }
-      },
-      "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "TodoItem",
-      "attributes": [
-        {
-          "name": "filter-by",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 129,
-              "column": 10
-            },
-            "end": {
-              "line": 129,
-              "column": 26
-            }
-          },
-          "metadata": {},
-          "type": "string"
-        },
-        {
-          "name": "is-editing",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 130,
-              "column": 10
-            },
-            "end": {
-              "line": 133,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "boolean"
-        }
-      ],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "todo-item"
-    },
-    {
-      "description": "",
-      "summary": "",
-      "path": "todomvc/elements/todo-items.html",
-      "properties": [],
-      "methods": [
-        {
-          "name": "filterList",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 39,
-              "column": 6
-            },
-            "end": {
-              "line": 50,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "filterBy"
-            }
-          ]
-        },
-        {
-          "name": "onAllCompletedChange",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 52,
-              "column": 6
-            },
-            "end": {
-              "line": 58,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ]
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 34,
-          "column": 4
-        },
-        "end": {
-          "line": 59,
-          "column": 5
-        }
-      },
-      "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "TodoItems",
-      "attributes": [],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "todo-items"
-    },
-    {
-      "description": "",
-      "summary": "",
-      "path": "todomvc/elements/todo-footer.html",
-      "properties": [
-        {
-          "name": "filterBy",
-          "type": "string",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 47,
-              "column": 10
-            },
-            "end": {
-              "line": 47,
-              "column": 26
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "completedCount",
-          "type": "number",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 48,
-              "column": 10
-            },
-            "end": {
-              "line": 51,
-              "column": 11
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          }
-        }
-      ],
-      "methods": [
-        {
-          "name": "isEqual",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 55,
-              "column": 6
-            },
-            "end": {
-              "line": 57,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "val1"
-            },
-            {
-              "name": "val2"
-            }
-          ]
-        },
-        {
-          "name": "getCompletedCount",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 59,
-              "column": 6
-            },
-            "end": {
-              "line": 61,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "totalCount"
-            },
-            {
-              "name": "activeCount"
-            }
-          ]
-        },
-        {
-          "name": "onClearCompletedButtonTap",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 63,
-              "column": 6
-            },
-            "end": {
-              "line": 67,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": []
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 39,
-          "column": 4
-        },
-        "end": {
-          "line": 68,
-          "column": 5
-        }
-      },
-      "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "TodoFooter",
-      "attributes": [
-        {
-          "name": "filter-by",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 47,
-              "column": 10
-            },
-            "end": {
-              "line": 47,
-              "column": 26
-            }
-          },
-          "metadata": {},
-          "type": "string"
-        },
-        {
-          "name": "completed-count",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 48,
-              "column": 10
-            },
-            "end": {
-              "line": 51,
-              "column": 11
-            }
-          },
-          "metadata": {},
-          "type": "number"
-        }
-      ],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "todo-footer"
-    },
-    {
-      "description": "",
-      "summary": "",
-      "path": "todomvc/elements/todo-action-dispatcher.html",
-      "properties": [],
-      "methods": [
-        {
-          "name": "_updateAllCompleted",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 11,
-              "column": 12
-            },
-            "end": {
-              "line": 18,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
-          "name": "_updateActiveCount",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 20,
-              "column": 12
-            },
-            "end": {
-              "line": 23,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
-          "name": "todo.actions.INIT_APPLICATION",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 25,
-              "column": 12
-            },
-            "end": {
-              "line": 28,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "details"
-            }
-          ]
-        },
-        {
-          "name": "todo.actions.ADD_TODO",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 30,
-              "column": 12
-            },
-            "end": {
-              "line": 36,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "details"
-            }
-          ]
-        },
-        {
-          "name": "todo.actions.UPDATE_TODO",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 38,
-              "column": 12
-            },
-            "end": {
-              "line": 41,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "details"
-            }
-          ]
-        },
-        {
-          "name": "todo.actions.REMOVE_TODO",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 43,
-              "column": 12
-            },
-            "end": {
-              "line": 48,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "details"
-            }
-          ]
-        },
-        {
-          "name": "todo.actions.SELECTION_CHANGED",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 50,
-              "column": 12
-            },
-            "end": {
-              "line": 65,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "details"
-            }
-          ]
-        },
-        {
-          "name": "todo.actions.CLEAR_COMPLETED",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 67,
-              "column": 12
-            },
-            "end": {
-              "line": 75,
-              "column": 13
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "details"
-            }
-          ]
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 6,
-          "column": 8
-        },
-        "end": {
-          "line": 76,
-          "column": 9
-        }
-      },
-      "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "TodpActionDispatcher",
-      "attributes": [],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "todo-action-dispatcher"
-    },
-    {
-      "description": "",
-      "summary": "",
-      "path": "todomvc/elements/todo-app.html",
-      "properties": [
-        {
-          "name": "route",
-          "type": "Object",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 50,
-              "column": 10
-            },
-            "end": {
-              "line": 50,
-              "column": 23
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "routeData",
-          "type": "Object",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 51,
-              "column": 10
-            },
-            "end": {
-              "line": 51,
-              "column": 27
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        }
-      ],
-      "methods": [
-        {
-          "name": "ready",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 55,
-              "column": 6
-            },
-            "end": {
-              "line": 61,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
-          "name": "onStorageLoadEmpty",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 63,
-              "column": 6
-            },
-            "end": {
-              "line": 65,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": []
-        },
-        {
-          "name": "onStorageLoad",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 67,
-              "column": 6
-            },
-            "end": {
-              "line": 71,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "params": []
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 43,
-          "column": 4
-        },
-        "end": {
-          "line": 72,
-          "column": 5
-        }
-      },
-      "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "TodoApp",
-      "attributes": [
-        {
-          "name": "route",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 50,
-              "column": 10
-            },
-            "end": {
-              "line": 50,
-              "column": 23
-            }
-          },
-          "metadata": {},
-          "type": "Object"
-        },
-        {
-          "name": "route-data",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 51,
-              "column": 10
-            },
-            "end": {
-              "line": 51,
-              "column": 27
-            }
-          },
-          "metadata": {},
-          "type": "Object"
-        }
-      ],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "todo-app"
-    }
-  ],
   "mixins": [
     {
       "description": "   Key mixin that must be assigned to all elements that need to access\n   application state and/or have access to the application element. The element is\n   notified of any changes to application's state, as well as all its properties\n   when they're modified by state mutator elements. `state-path` property must\n   be used to identify path to element's state in application state tree. \n\n   ### Example:\n\n   #### HTML:\n\n      <template>\n\n        <div>Value A: [[state.valueA]]</div>\n        <div>Value B: [[valueB]]</div>\n\n      </template>\n\n   #### JavaScript:\n\n      class MyElement extends UniFlow.StateAware(Polymer.Element) {\n        static get is() { return 'my-element'; }\n\n        static get properties() {\n          return {\n            valueB: String\n          }\n        }\n      }\n\n      customElement.define(MyElement.is, MyElement);\n\n   When above element is declared as follows:\n\n      <my-element state-path=\"state.myElement\"></my-element>\n\n   it will be notified about changes (and render those) to `state.valueA` or\n   `state.myElement.valueB` in action dispatchers or other state mutating\n   elements.\n\n   ",
@@ -1370,7 +479,7 @@
       ]
     },
     {
-      "description": "   Use UniFlow.ActionDispatcher for non-visual elements that process actions emitted by visual\n   elements. Action dispatchers usually placed at the application level. Each action dispatcher\n   element gets a chance to process the action in the order the elements are present in the\n   DOM tree. It is important that action dispatcher elements get two-way data binding to\n   application state as follows:\n\n      <action-dispatcher state=\"{{state}}\"></action-dispatcher>\n\n   Action dispatcher elements can include nested action dispatchers, so you can have a\n   hierarchical organization of action dispatchers.\n\n   ### Example:\n\n   #### HTML:\n\n      <dom-module id=\"parent-dispatcher\">\n        <template>\n          <child-dispatcher-a state=\"{{state}}\"></child-dispatcher-a>\n          <child-dispatcher-b state=\"{{state}}\"></child-dispatcher-b>\n        </template>\n      </dom-module>\n\n   #### JavaScript:\n       class ParentDispatcher extends UniFlow.ActionDispatcher(Polymer.Element) {\n         static get is() { return 'parent-dispatcher'; }\n\n         MY_ACTION(detail) {\n           // do MY_ACTION processing here\n           // return false if you want to prevent other action dispatchers from\n           // further processing of this action\n         };\n       }\n\n       customElements.define(ParentDispatcher.is, ParentDispatcher);\n\n   ",
+      "description": "   Use UniFlow.ActionDispatcher for non-visual elements that process actions emitted by visual\n   elements. Action dispatchers usually placed at the application level. Each action dispatcher\n   element gets a chance to process the action in the order the elements are present in the\n   DOM tree. It is important that action dispatcher elements get two-way data binding to\n   application state as follows:\n\n   <action-dispatcher state=\"{{state}}\"></action-dispatcher>\n\n   Action dispatcher elements can include nested action dispatchers, so you can have a\n   hierarchical organization of action dispatchers.\n\n   ### Example:\n\n   #### HTML:\n\n   <dom-module id=\"parent-dispatcher\">\n   <template>\n   <child-dispatcher-a state=\"{{state}}\"></child-dispatcher-a>\n   <child-dispatcher-b state=\"{{state}}\"></child-dispatcher-b>\n   </template>\n   </dom-module>\n\n   #### JavaScript:\n   class ParentDispatcher extends UniFlow.ActionDispatcher(Polymer.Element) {\n         static get is() { return 'parent-dispatcher'; }\n\n         MY_ACTION(detail) {\n           // do MY_ACTION processing here\n           // return false if you want to prevent other action dispatchers from\n           // further processing of this action\n         };\n       }\n\n   customElements.define(ParentDispatcher.is, ParentDispatcher);\n\n   ",
       "summary": "",
       "path": "action-dispatcher.html",
       "properties": [
@@ -1469,11 +578,11 @@
           "sourceRange": {
             "start": {
               "line": 68,
-              "column": 10
+              "column": 12
             },
             "end": {
               "line": 72,
-              "column": 11
+              "column": 13
             }
           },
           "metadata": {
@@ -1550,11 +659,11 @@
           "sourceRange": {
             "start": {
               "line": 87,
-              "column": 6
+              "column": 8
             },
             "end": {
-              "line": 106,
-              "column": 7
+              "line": 97,
+              "column": 9
             }
           },
           "metadata": {},
@@ -1578,8 +687,8 @@
           "column": 2
         },
         "end": {
-          "line": 108,
-          "column": 6
+          "line": 99,
+          "column": 8
         }
       },
       "privacy": "public",
@@ -1663,11 +772,11 @@
           "sourceRange": {
             "start": {
               "line": 68,
-              "column": 10
+              "column": 12
             },
             "end": {
               "line": 72,
-              "column": 11
+              "column": 13
             }
           },
           "metadata": {},
@@ -1844,11 +953,11 @@
             "file": "action-dispatcher.html",
             "start": {
               "line": 68,
-              "column": 10
+              "column": 12
             },
             "end": {
               "line": 72,
-              "column": 11
+              "column": 13
             }
           },
           "metadata": {
@@ -1861,37 +970,41 @@
       "methods": [
         {
           "name": "connectedCallback",
-          "description": "",
+          "description": "Adds this element to the list of state-aware elements in the application.\nSets the value of state property to the state of the application element.",
           "privacy": "public",
           "sourceRange": {
+            "file": "state-aware.html",
             "start": {
-              "line": 100,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 132,
               "column": 7
             }
           },
           "metadata": {},
-          "params": []
+          "params": [],
+          "inheritedFrom": "UniFlow.StateAware"
         },
         {
           "name": "disconnectedCallback",
-          "description": "",
+          "description": "Removes this element from the list of state-aware elements in the\napplication.",
           "privacy": "public",
           "sourceRange": {
+            "file": "state-aware.html",
             "start": {
-              "line": 105,
+              "line": 138,
               "column": 6
             },
             "end": {
-              "line": 108,
+              "line": 145,
               "column": 7
             }
           },
           "metadata": {},
-          "params": []
+          "params": [],
+          "inheritedFrom": "UniFlow.StateAware"
         },
         {
           "name": "getApplication",
@@ -1923,11 +1036,11 @@
             "file": "action-dispatcher.html",
             "start": {
               "line": 87,
-              "column": 6
+              "column": 8
             },
             "end": {
-              "line": 106,
-              "column": 7
+              "line": 97,
+              "column": 9
             }
           },
           "metadata": {},
@@ -1948,11 +1061,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 102,
               "column": 6
             },
             "end": {
-              "line": 121,
+              "line": 104,
               "column": 7
             }
           },
@@ -1970,11 +1083,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 113,
               "column": 6
             },
             "end": {
-              "line": 132,
+              "line": 115,
               "column": 7
             }
           },
@@ -1993,11 +1106,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 126,
               "column": 6
             },
             "end": {
-              "line": 166,
+              "line": 149,
               "column": 7
             }
           },
@@ -2010,15 +1123,15 @@
         },
         {
           "name": "ready",
-          "description": "Sets application.element value to this element (so all state-aware elements\nhave access to application element).",
+          "description": "Sets application.element value to this element (so all state-aware elements\nhave access to application element). Registers event listener to dispatch-action event.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 155,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 159,
               "column": 7
             }
           },
@@ -2035,7 +1148,7 @@
           "column": 2
         },
         "end": {
-          "line": 177,
+          "line": 161,
           "column": 6
         }
       },
@@ -2121,11 +1234,11 @@
             "file": "action-dispatcher.html",
             "start": {
               "line": 68,
-              "column": 10
+              "column": 12
             },
             "end": {
               "line": 72,
-              "column": 11
+              "column": 13
             }
           },
           "metadata": {},
@@ -2456,11 +1569,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 176,
               "column": 6
             },
             "end": {
-              "line": 182,
+              "line": 178,
               "column": 7
             }
           },
@@ -2473,11 +1586,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 191,
               "column": 6
             },
             "end": {
-              "line": 211,
+              "line": 207,
               "column": 7
             }
           },
@@ -2495,11 +1608,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 216,
               "column": 6
             },
             "end": {
-              "line": 230,
+              "line": 226,
               "column": 7
             }
           },
@@ -2512,11 +1625,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 240,
+              "line": 236,
               "column": 6
             },
             "end": {
-              "line": 260,
+              "line": 256,
               "column": 7
             }
           },
@@ -2533,11 +1646,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 266,
+              "line": 262,
               "column": 6
             },
             "end": {
-              "line": 270,
+              "line": 266,
               "column": 7
             }
           },
@@ -2556,11 +1669,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 278,
+              "line": 274,
               "column": 6
             },
             "end": {
-              "line": 292,
+              "line": 288,
               "column": 7
             }
           },
@@ -2582,7 +1695,7 @@
           "column": 2
         },
         "end": {
-          "line": 294,
+          "line": 290,
           "column": 6
         }
       },
