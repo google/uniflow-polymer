@@ -14,42 +14,37 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="state-aware.html">
 
 <script>
-
   var UniFlow = window.UniFlow || {};
 
-/**
+  /**
 
- Some non-visual elements, like action dispatchers, need to modify application
- state, in which case they should have this behavior assigned. Implements state-
- aware and re-declares state property with notify attribute. State mutator elements
- are only supposed to exist at the application level.
+   Some non-visual elements, like action dispatchers, need to modify application
+   state, in which case they should have this mixin applied. Implements state-
+   aware and re-declares state property with notify attribute. State mutator elements
+   are only supposed to exist at the application level.
 
- @polymerBehavior UniFlow.StateMutator
-*/
+   @polymer
+   @mixinFunction
+   @appliesMixin UniFlow.StateAware
+  */
+  UniFlow.StateMutator = Polymer.dedupingMixin((base) =>
+    class extends UniFlow.StateAware(base) {
 
-  UniFlow.StateMutatorImpl = {
+      static get properties() {
+        return {
+          /**
+           * Application state.
+           */
+          state: {
+            type: Object,
+            notify: true
+          }
+        }
 
-    properties: {
-      /**
-       * Application state.
-       */
-      state: {
-        type: Object,
-        notify: true
-      }
-
-    }
-
-  };
-
-  /** @polymerBehavior */
-  UniFlow.StateMutator = [
-    UniFlow.StateAware,
-    UniFlow.StateMutatorImpl
-  ];
-
+      };
+    });
 </script>

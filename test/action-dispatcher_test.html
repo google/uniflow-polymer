@@ -15,27 +15,30 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <html>
+
 <head>
   <meta charset="UTF-8">
-  <title>paper-toolbar basic tests</title>
+  <title>UniFlow.ActionDispatcher tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
 
-  <link rel="import" href="../../uniflow-polymer/action-dispatcher.html">
+  <link rel="import" href="../action-dispatcher.html">
 
 </head>
+
 <body>
 
   <dom-module id="action-dispatcher-test">
     <script>
-      Polymer({
-        is: 'action-dispatcher-test',
-        behaviors: [
-          UniFlow.ActionDispatcher,
-        ]
-      });
+      class ActionDispatcherTest extends UniFlow.ActionDispatcher(Polymer.Element) {
+        static get is() {
+          return 'action-dispatcher-test';
+        }
+      }
+
+      customElements.define(ActionDispatcherTest.is, ActionDispatcherTest);
     </script>
   </dom-module>
 
@@ -44,12 +47,13 @@ limitations under the License.
       <action-dispatcher-test id="inner"></action-dispatcher-test>
     </template>
     <script>
-      Polymer({
-        is: 'nested-action-dispatcher-test',
-        behaviors: [
-          UniFlow.ActionDispatcher,
-        ]
-      });
+      class NestedActionDispatcherTest extends UniFlow.ActionDispatcher(Polymer.Element) {
+        static get is() {
+          return 'nested-action-dispatcher-test';
+        }
+      }
+
+      customElements.define(NestedActionDispatcherTest.is, NestedActionDispatcherTest);
     </script>
   </dom-module>
 
@@ -81,26 +85,34 @@ limitations under the License.
       });
 
       test('dispatchAction calls method with name that matches action ' +
-          'type', () => {
-        actionDispatcher.MY_ACTION = sinon.spy();
-        const detail = {type: 'MY_ACTION', foo: 'bar'};
-        actionDispatcher.dispatchAction(detail);
-        expect(actionDispatcher.MY_ACTION).to.be.calledWith(detail);
-      });
+        'type', () => {
+          actionDispatcher.MY_ACTION = sinon.spy();
+          const detail = {
+            type: 'MY_ACTION',
+            foo: 'bar'
+          };
+          actionDispatcher.dispatchAction(detail);
+          expect(actionDispatcher.MY_ACTION).to.be.calledWith(detail);
+        });
 
       test('dispatchAction returns false when action processor method' +
         ' returns false', () => {
-        actionDispatcher.MY_ACTION = () => false;
-        const detail = {type: 'MY_ACTION'};
-        expect(actionDispatcher.dispatchAction(detail)).to.be.false;
-      });
+          actionDispatcher.MY_ACTION = () => false;
+          const detail = {
+            type: 'MY_ACTION'
+          };
+          expect(actionDispatcher.dispatchAction(detail)).to.be.false;
+        });
 
       test('nested action dispatcher\'s method is invoked', () => {
         actionDispatcher = fixture('nested');
         expect(actionDispatcher).to.be.ok;
         expect(actionDispatcher.$.inner).to.be.ok;
         actionDispatcher.$.inner.MY_ACTION = sinon.spy();
-        const detail = {type: 'MY_ACTION', foo: 'bar'};
+        const detail = {
+          type: 'MY_ACTION',
+          foo: 'bar'
+        };
         actionDispatcher.dispatchAction(detail);
         expect(actionDispatcher.$.inner.MY_ACTION).to.be.calledWith(detail);
       });
@@ -109,4 +121,5 @@ limitations under the License.
   </script>
 
 </body>
+
 </html>

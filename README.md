@@ -1,6 +1,6 @@
-# UniFlow for Polymer
+# UniFlow for Polymer 2.x
 
-Set of behaviors to enable uni-directional data flow in Polymer application.
+Set of mixins to enable uni-directional data flow in Polymer application.
 
 **Important!**
 
@@ -22,7 +22,7 @@ This library implements the architectural pattern called 'unidirectional data fl
 
 ## Implementation
 
-UniFlow is implemented as a set of behaviors that developers assign to their elements. It is assumed that each application has a singleton application element that maintains state of entire application. Each element that needs access to the data is bound, directly or indirectly, to sub-tree of application state tree. Two way data binding is never used to send data up, from child to parent, so only parent elements send data to children using one way data binding. Child elements, in turn, send the events (emit actions) responding to user actions, indicating that the data may need to be modified. Special non-visual elements called action dispatchers mutate the data, then all elements listening to the data changes render new data. 
+UniFlow is implemented as a set of mixins that developers apply to their elements. It is assumed that each application has a singleton application element that maintains state of entire application. Each element that needs access to the data is bound, directly or indirectly, to sub-tree of application state tree. Two way data binding is never used to send data up, from child to parent, so only parent elements send data to children using one way data binding. Child elements, in turn, send the events (emit actions) responding to user actions, indicating that the data may need to be modified. Special non-visual elements called action dispatchers mutate the data, then all elements listening to the data changes render new data. 
 
 # API Documentation
 
@@ -54,32 +54,31 @@ hierarchical organization of action dispatchers.
 #### JavaScript:
 
 ```javascript
-Polymer({
-  is: 'parent-dispatcher',
-  
-  behaviors: [
-   UniFlow.ActionDispatcher
-  ],
+class ParentDispatcher extends UniFlow.ActionDispatcher(Polymer.Element) {
+
+  static get is() { return 'parent-dispatcher'; }
   
   MY_ACTION(detail) {
    // do MY_ACTION processing here
    // return false if you want to prevent other action dispatchers from
    // further processing of this action
   };
-});
+}
+
+customElements.define(ParentDispatcher.is, ParentDispatcher);
 ```
 
 ## Action Emitter
 
-Whenever element needs to emit an action, this behavior should be used. Action object must always include type property.
+Whenever element needs to emit an action, this mixin should be used. Action object must always include type property.
 
 ## Application State
 
-Assign this behavior to your main application element. It provides global
-state and functionality to maintain individual elements states. This behavior
+Assign this mixin to your main application element. It provides global
+state and functionality to maintain individual elements states. This mixin
 is responsible for notifying all state-aware elements about their state
 changes (provided those elements have `statePath` property defined).
-Only one element in the application is supposed to have this behavior.
+Only one element in the application is supposed to have this mixin.
 
 ### Example:
 
@@ -97,19 +96,19 @@ Only one element in the application is supposed to have this behavior.
 #### JavaScript:
 
 ```javascript
-Polymer({
-  is: 'my-app',
+class MyApp extends UniFlow.ApplicationState(Polymer.Element) {
 
-  behaviors: [
-    UniFlow.ApplicationState
-  ],
+  static get is() { return 'my-app'; }
 
-  attached() {
+  connectedCallback() {
+    super.connectedCallback();
     this.state = {
       someElement: {}
     }
   }
-});
+}
+
+customElements.define(MayApp.is, MyApp);
 ```
 
 In the example above, `<some-element>` will receive notification of any changes to the state,
@@ -136,9 +135,9 @@ changes.
 
 ## List View
 
-This behavior used by elements that need to render multiple models backed
+This mixin used by elements that need to render multiple models backed
 by 'list' array. You may want to use ModelView to render individual
-models in the list. The behavior supports element selection by setting predefined
+models in the list. The mixin supports element selection by setting predefined
 $selected property on list elements.
 
 ### Example:
@@ -161,20 +160,17 @@ Selected: [[selectedCount]] items
 #### JavaScript:
 
 ```javascript
-Polymer({
+class ListElement extends Polymer.GestureEventListeners(UniFlow.ListView(UniFlow.StateAware(Polymer.Element))) {
 
-  is: "list-element",
-
-  behaviors: [
-    UniFlow.ListView,
-    UniFlow.StateAware
-  ],
+  static get is() { return "list-element"; }
 
   onDeleteTap() {
     this.deleteSelected();
   }
 
-});
+}
+
+customElements.define(ListElement.is, ListElement);
 ```
 
 In the example above list view element is also state-aware, meaning it has its own place
@@ -191,7 +187,7 @@ within dom-repeat template will have `state-path` property  set to
 ## Model View
 
 Element rendering data represented by a single object (model) in the
-application state should use ModelView behavior. Model View is a powerful
+application state should use ModelView mixin. Model View is a powerful
 concept that encapsulates model data (likely the data received from the
 server and to be persisted to the server if modified as a result of user
 actions), status (validity of the data, flag that data was modified,
@@ -199,13 +195,13 @@ notifications for the user, etc.). Auxiliary data supplied by action
 dispatchers and needed for display purposes or element's logic
 should be defined as element’s properties. Same applies to data
 created/modified by the element but not intended to be persisted.
-If `StateAware` behavior is used along with `ModelView`, you can take advantage
+If `StateAware` mixin is used along with `ModelView`, you can take advantage
 of statePath property that indicates path to the element's state in the
 application state tree. Whenever any data is mutated by action dispatchers
 at statePath or below, the element will receive notification of its
 properties' change (even if there is no explicit binding for those
 properties). See `UniFlow.StateAware` for more details and example.
-ModelView behavior defines some properties that are intended to be overridden
+ModelView mixin defines some properties that are intended to be overridden
 in the elements:
 
 + `validation` property allows to specify validation rules
@@ -237,22 +233,24 @@ string for given error code (to translate validation error code to message)
 #### JavaScript:
 
 ```javascript
-Polymer({
-  is: "my-model",
-  saveAction: 'MY_SAVE',
-  behaviors: [
-   UniFlow.ModelView
-  ],
+class MyModel extends Polymer.GestureEventListeners(UniFlow.ModelView(Polymer.Element)) {
+
+  static get is() { return "my-model"; }
   
-  validation: {
-   name: (value) => {
-     if (!value || !value.trim()) {
-       return 'Name is not specified';
-     }
-   }
-  },
+  get saveAction() { return 'MY_SAVE'; }
   
-  attached() {
+  get validation() { 
+    return {
+      name: (value) => {
+        if (!value || !value.trim()) {
+          return 'Name is not specified';
+        }
+      }
+    }
+  }
+  
+  connectedCallback() {
+   super.connectedCallback();
    this.fetchData();
   },
   
@@ -266,12 +264,14 @@ Polymer({
   onSaveTap() {
    this.validateAndSave();
   }
-});
+}
+
+customElements.define(MyModel.is, MyModel);
 ```
 
 In the example above model view has input field for `name` property and Save button. On
 element attach the action is emitted to fetch the model's data. Note that in `emitAction()` method
-the path is specified as `'model'`. ActionEmitter behavior is responsible of expanding the path
+the path is specified as `'model'`. ActionEmitter mixin is responsible of expanding the path
 with element's state path, ensuring that when action dispatcher gets to process the action, the
 path contains full path in the state tree. So assuming that `my-model` is declared as follows:
 
@@ -297,7 +297,7 @@ path.
 
 ## State Aware
 
- Key behavior that must be assigned to all elements that need to access
+ Key mixin that must be assigned to all elements that need to access
  application state and/or have access to the application element. The element is
  notified of any changes to application's state, as well as all its properties
  when they're modified by state mutator elements. `state-path` property must
@@ -318,17 +318,16 @@ path.
 #### JavaScript:
 
 ```javascript
-Polymer({
-  is: 'my-element',
+class MyElement extends UniFlow.StateAware(Polymer.Element) {
+
+  static get is() { return 'my-element'; }
   
   properties: {
     valueB: String
-  },
-  
-  behaviors: [
-    UniFlow.StateAware
-  ]
-});
+  }
+}
+
+customElements.define(MyElement.is, MyElement);
 ```
 
 When above element is declared as follows:
@@ -344,7 +343,7 @@ elements.
 ## State Mutator
 
 Some non-visual elements, like action dispatchers, need to modify application
-state, in which case they should have this behavior assigned. Implements state-
+state, in which case they should have this mixin assigned. Implements state-
 aware and re-declares state property with notify attribute. State mutator elements
 are only supposed to exist at the application level.
 

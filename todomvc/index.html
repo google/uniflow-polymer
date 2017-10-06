@@ -4,23 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TodoMVC with UniFlow</title>
-    <link rel="stylesheet" href="/bower_components/todomvc-app-css/index.css">
+    <link rel="stylesheet" href="../../todomvc-app-css/index.css">
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="/manifest.json">
 
-    <script>
-      /* this script must run before Polymer is imported */
-      window.Polymer = {
-        dom: 'shadow',
-        lazyRegister: true
-      };
-    </script>
-
     <script src="scripts/actions.js"></script>
 
-    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="/elements/todo-app.html">
+    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="elements/todo-app.html">
 
   </head>
   <body>

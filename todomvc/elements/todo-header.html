@@ -1,68 +1,44 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/uniflow-polymer/action-emitter.html">
-<link rel="import" href="../bower_components/uniflow-polymer/state-aware.html">
+<link rel="import" href="../../../polymer/polymer-element.html">
+<link rel="import" href="../../action-emitter.html">
+<link rel="import" href="../../state-aware.html">
 
 <link rel="import" href="todo-styles.html">
 
 <dom-module id="todo-header">
   <template>
-    <style is="custom-style" include="todo-styles">
-
-      .toggle-all {
-        position: absolute;
-        top: 14px;
-        z-index: 1;
-      }
-
-      input::-webkit-input-placeholder {
-        font-style: italic;
-        font-weight: 300;
-        color: #e6e6e6;
-      }
-
-      input::-moz-placeholder {
-        font-style: italic;
-        font-weight: 300;
-        color: #e6e6e6;
-      }
-
-      input::input-placeholder {
-        font-style: italic;
-        font-weight: 300;
-        color: #e6e6e6;
-      }
-
-      h1 {
-        position: absolute;
-        top: -140px;
-        width: 100%;
-        font-size: 100px;
-        font-weight: 100;
-        text-align: center;
-        color: rgba(175, 47, 47, 0.15);
-        -webkit-text-rendering: optimizeLegibility;
-        -moz-text-rendering: optimizeLegibility;
-        text-rendering: optimizeLegibility;
-      }
+    <style include="todo-styles">
 
     </style>
 
     <header class="header">
       <h1>todos</h1>
-      <template is="dom-if" if="[[state.todoList.length]]">
-        <input class="toggle-all"
-               type="checkbox"
-               checked="[[state.allCompleted]]"
-               on-change="onAllCompletedChange">
-      </template>
-      <input class="new-todo"
-             placeholder="What needs to be done?"
-             value="{{todoText::input}}"
-             on-keydown="onInputKeyDown"
-             autofocus>
+      <input class="new-todo" placeholder="What needs to be done?" value="{{todoText::input}}" on-keydown="onInputKeyDown" autofocus>
     </header>
 
   </template>
-</dom-module>
+  <script>
+    class TodoHeader extends UniFlow.ActionEmitter(Polymer.Element) {
+      static get is() {
+        return 'todo-header';
+      }
 
-<script src="todo-header.js"></script>
+      static properties() {
+        return {
+          todoText: String
+        }
+      }
+
+      onInputKeyDown(e) {
+        if (e.keyCode == 13 && this.todoText.trim().length) {
+          this.emitAction({
+            type: todo.actions.ADD_TODO,
+            text: this.todoText
+          });
+          this.todoText = '';
+        }
+      }
+    }
+
+    customElements.define(TodoHeader.is, TodoHeader);
+  </script>
+</dom-module>

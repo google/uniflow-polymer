@@ -14,154 +14,148 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="action-emitter.html">
 
 
-<script type="text/javascript" type="text/ecmascript-6">
-
+<script type="text/javascript">
   var UniFlow = window.UniFlow || {};
 
-/**
+  /**
 
- This behavior used by elements that need to render multiple models backed
- by 'list' array. You may want to use ModelView to render individual
- models in the list. The behavior supports element selection by setting predefined
- $selected property on list elements.
+   This mixin used by elements that need to render multiple models backed
+   by 'list' array. You may want to use ModelView to render individual
+   models in the list. The mixin supports element selection by setting predefined
+   $selected property on list elements.
 
- ### Example:
+   ### Example:
 
- #### HTML:
+   #### HTML:
 
-     <ul>
-       <template id="list-template" is="dom-repeat" items="[[list]]">
-         <li id="[[item.id]]">
-           <paper-checkbox checked="{{item.$selected}}">
-           <model-view state-path="[[statePath]].list.#[[index]]"></model-view>
-         </li>
-       </template>
-     </ul>
-     Selected: [[selectedCount]] items
-     <paper-button on-tap="onDeleteTap">Delete</paper-button>
+       <ul>
+         <template id="list-template" is="dom-repeat" items="[[list]]">
+           <li id="[[item.id]]">
+             <paper-checkbox checked="{{item.$selected}}">
+             <model-view state-path="[[statePath]].list.#[[index]]"></model-view>
+           </li>
+         </template>
+       </ul>
+       Selected: [[selectedCount]] items
+       <paper-button on-tap="onDeleteTap">Delete</paper-button>
 
- #### JavaScript:
+   #### JavaScript:
+       class ListElement extends UniFlow.StateAware(UniFlow.ListView(Polymer.Element)) {
+         static get is() { return "list-element"; }
 
-     Polymer({
-
-       is: "list-element",
-
-       behaviors: [
-         UniFlow.ListView,
-         UniFlow.StateAware
-       ],
-
-       onDeleteTap() {
-         this.deleteSelected();
+         onDeleteTap() {
+           this.deleteSelected();
+         }
        }
 
-     });
+       customElements.define(ListElement.is, ListElement);
 
- In the example above list view element is also state-aware, meaning it has its own place
- in the application state tree. Assuming it has been declared as follows:
+   In the example above list view element is also state-aware, meaning it has its own place
+   in the application state tree. Assuming it has been declared as follows:
 
-     <list-element state-path="state.listElement"></list-element>
+       <list-element state-path="state.listElement"></list-element>
 
- it will be rendering `state.listElement.list` and observing changes to it. Each `model-view`
- within dom-repeat template will have `state-path` property  set to
- `state.listElement.list.#<index>`  where `index` is the element's index in the array.
+   it will be rendering `state.listElement.list` and observing changes to it. Each `model-view`
+   within dom-repeat template will have `state-path` property  set to
+   `state.listElement.list.#<index>`  where `index` is the element's index in the array.
 
 
- @polymerBehavior UniFlow.ListView
-*/
-  UniFlow.ListViewImpl = {
-    properties: {
+   @polymer
+   @mixinFunction
+   @appliesMixin UniFlow.ActionEmitter
+  */
+  UniFlow.ListView = Polymer.dedupingMixin((base) =>
+    class extends UniFlow.ActionEmitter(base) {
+      static get properties() {
+        return {
 
-      /**
-       * Array which data is to be rendered by the element.
-       */
-      list: {
-        type: Array,
-        value: () => []
-      },
+          /**
+           * Array which data is to be rendered by the element.
+           */
+          list: {
+            type: Array,
+            value: () => []
+          },
 
-      /**
-       * If element supports item selection (using meta-property $selected) then
-       * selectedCount property will keep track of number of selected items.
-       */
-      selectedCount: {
-        type: Number,
-        notify: true,
-        value: 0,
-      },
+          /**
+           * If element supports item selection (using meta-property $selected) then
+           * selectedCount property will keep track of number of selected items.
+           */
+          selectedCount: {
+            type: Number,
+            notify: true,
+            value: 0,
+          },
 
-      /**
-       * Action name that will be emitted when deleteSelected method is called
-       * without parameter.
-       */
-      deleteAction: String
+          /**
+           * Action name that will be emitted when deleteSelected method is called
+           * without parameter.
+           */
+          deleteAction: String
 
-    },
-
-    observers: [
-      'itemChanged_(list.*)',
-    ],
-
-    /**
-     * Whenever list is set or mutated (elements added/removed), as well as
-     * meta-property $selected is modified, updates selectedCount.
-     * @param {!Object} change
-     * @private
-     */
-    itemChanged_(change) {
-      if (this.get('list') &&
-        (change.path == 'list' ||
-        change.path == 'list.splices' ||
-        change.path.endsWith('$selected'))) {
-        this.updateSelectedCount_();
+        }
       }
-    },
 
-    /**
-     * Updates selectedCount property of the element by iterating the list and
-     * counting each item that has meta-property $selected set.
-     * @private
-     */
-    updateSelectedCount_() {
-      let selectedCount = 0;
-      this.get('list').forEach((elem) => {
-        selectedCount += elem.$selected ? 1 : 0;
-      });
-      this.selectedCount = selectedCount;
-    },
+      static get observers() {
+        return [
+          'itemChanged_(list.*)',
+        ]
+      }
 
-    /**
-     * Emits deleteAction for each selected element in the list (for which
-     * meta-property $selected is set).
-     * @param {string=} deleteAction Action type for the action that  will be emitted
-     *     for each selected element. If not specified, `deleteAction` property of the element
-     *     will be used.
-     */
-    deleteSelected(deleteAction) {
-      deleteAction = deleteAction || this.deleteAction;
-      if (deleteAction) {
-        this.list.forEach(item => {
-          if (item.$selected) {
-            this.emitAction({
-              type: deleteAction,
-              item: item
-            });
-          }
+      /**
+       * Whenever list is set or mutated (elements added/removed), as well as
+       * meta-property $selected is modified, updates selectedCount.
+       * @param {!Object} change
+       * @private
+       */
+      itemChanged_(change) {
+        if (this.get('list') &&
+          (change.path == 'list' ||
+            change.path == 'list.splices' ||
+            change.path.endsWith('$selected'))) {
+          this.updateSelectedCount_();
+        }
+      }
+
+      /**
+       * Updates selectedCount property of the element by iterating the list and
+       * counting each item that has meta-property $selected set.
+       * @private
+       */
+      updateSelectedCount_() {
+        let selectedCount = 0;
+        this.get('list').forEach((elem) => {
+          selectedCount += elem.$selected ? 1 : 0;
         });
-      } else {
-        console.warn('delete action is not defined');
+        this.selectedCount = selectedCount;
       }
-    }
 
-  };
+      /**
+       * Emits deleteAction for each selected element in the list (for which
+       * meta-property $selected is set).
+       * @param {string=} deleteAction Action type for the action that  will be emitted
+       *     for each selected element. If not specified, `deleteAction` property of the element
+       *     will be used.
+       */
+      deleteSelected(deleteAction) {
+        deleteAction = deleteAction || this.deleteAction;
+        if (deleteAction) {
+          this.list.forEach(item => {
+            if (item.$selected) {
+              this.emitAction({
+                type: deleteAction,
+                item: item
+              });
+            }
+          });
+        } else {
+          console.warn('delete action is not defined');
+        }
+      }
 
-  /** @polymerBehavior */
-  UniFlow.ListView = [
-    UniFlow.ActionEmitter,
-    UniFlow.ListViewImpl
-  ];
+    });
 </script>
