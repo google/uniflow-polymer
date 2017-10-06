@@ -18,16 +18,16 @@ UniFlow is implemented as a set of behaviors that developers assign to their ele
 
 ## API Documentation
 
-[Application State](components/uniflow-polymer/#UniFlow.ApplicationState)
+[Application State](components/uniflow-polymer/#/mixins/UniFlow.ApplicationState)
 
-[State-Aware](components/uniflow-polymer/#UniFlow.StateAware)
+[State-Aware](components/uniflow-polymer/#/mixins/UniFlow.StateAware)
 
-[Action Emitter](components/uniflow-polymer/#UniFlow.ActionEmitter)
+[Action Emitter](components/uniflow-polymer/#/mixins/UniFlow.ActionEmitter)
 
-[State Mutator](components/uniflow-polymer/#UniFlow.StateMutator)
+[State Mutator](components/uniflow-polymer/#/mixins/UniFlow.StateMutator)
 
-[Action Dispatcher](components/uniflow-polymer/#UniFlow.ActionDispatcher)
+[Action Dispatcher](components/uniflow-polymer/#/mixins/UniFlow.ActionDispatcher)
 
-[Model View](components/uniflow-polymer/#UniFlow.ModelView)
+[Model View](components/uniflow-polymer/#/mixins/UniFlow.ModelView)
 
-[List View](components/uniflow-polymer/#UniFlow.ListView)
+[List View](components/uniflow-polymer/#/mixins/UniFlow.ListView)
