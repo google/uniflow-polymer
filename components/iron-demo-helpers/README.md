@@ -17,7 +17,7 @@ thing! https://github.com/PolymerLabs/tedium/issues
 _[Demo and API docs](https://elements.polymer-project.org/elements/iron-demo-helpers)_
 
 
-##&lt;demo-snippet&gt;
+## &lt;demo-snippet&gt;
 
 `demo-snippet` is a helper element that displays the source of a code snippet and
 its rendered demo. It can be used for both native elements and
@@ -54,7 +54,7 @@ The following custom properties and mixins are available for styling:
 
 
 
-##&lt;url-bar&gt;
+## &lt;url-bar&gt;
 
 `url-bar` is a helper element that displays a simple read-only URL bar if
 and only if the page is in an iframe. In this way we can demo elements that

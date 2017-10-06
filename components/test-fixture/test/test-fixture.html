@@ -14,26 +14,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
-  <script src="../test-fixture-mocha.js"></script>
 
   <link rel="import" id="test-fixture-import" href="../test-fixture.html">
+  <script src="../test-fixture-mocha.js"></script>
+
+  <script>
+  (function() {
+    function XCustom() {
+      if (window.Reflect) {
+        return Reflect.construct(HTMLElement, [], XCustom);
+      }
+      return HTMLElement.call(this) || this;
+    }
+
+    XCustom.prototype = Object.create(HTMLElement.prototype);
+    Object.defineProperty(XCustom.prototype, 'constructor', {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: XCustom,
+    });
+    XCustom.prototype.onDetached = function() {};
+    XCustom.prototype.disconnectedCallback =
+        XCustom.prototype.detachedCallback = function() {
+          this.onDetached();
+        };
+
+    if (window.customElements) {
+      customElements.define('x-custom', XCustom);
+    } else if (document.registerElement) {
+      document.registerElement('x-custom', {
+        prototype: XCustom.prototype
+      });
+    } else {
+      throw new Error('No custom elements API was found.');
+    }
+  })();
+  </script>
 </head>
 <body>
-  <script>
-    (function() {
-      var proto = Object.create(HTMLElement.prototype);
-
-      proto.onDetached = function() {};
-
-      proto.detachedCallback = function() {
-        this.onDetached();
-      };
-
-      document.registerElement('x-custom', {
-        prototype: proto
-      });
-    })();
-  </script>
   <test-fixture id="TrivialFixture">
     <template>
       <div id="Foo"></div>

@@ -235,10 +235,17 @@ large quantity of ever-growing set-up and tear-down boilerplate.
 
     forcePolyfillAttachedStateSynchrony: function () {
       // Force synchrony in attachedCallback and detachedCallback where
-      // implemented, in the event that we are dealing with the async Web
-      // Components Polyfill.
-      if (window.CustomElements && window.CustomElements.takeRecords) {
+      // implemented, in the event that we are dealing with one of these async
+      // polyfills:
+      // 1. Web Components CustomElements polyfill (v1 or v0).
+      if (window.customElements && window.customElements.flush) {
+        window.customElements.flush();
+      } else if (window.CustomElements && window.CustomElements.takeRecords) {
         window.CustomElements.takeRecords();
+      }
+      // 2. ShadyDOM polyfill.
+      if (window.ShadyDOM && window.ShadyDOM.flush) {
+        window.ShadyDOM.flush();
       }
     },
 
@@ -313,9 +320,26 @@ large quantity of ever-growing set-up and tear-down boilerplate.
     });
 
   try {
-    document.registerElement('test-fixture', {
-      prototype: TestFixturePrototype
-    });
+    if (window.customElements) {
+      function TestFixture() {
+        return ((window.Reflect && Reflect.construct) ?
+            Reflect.construct(HTMLElement, [], TestFixture)
+            : HTMLElement.call(this)) || this;
+      }
+      TestFixture.prototype = TestFixturePrototype;
+      // `constructor` is not writable on Safari 9, but is configurable.
+      Object.defineProperty(TestFixture.prototype, 'constructor', {
+        configurable: true,
+        enumerable: true,
+        writable: true,
+        value: TestFixture,
+      });
+      window.customElements.define('test-fixture', TestFixture);
+    } else {
+      document.registerElement('test-fixture', {
+        prototype: TestFixturePrototype
+      });
+    }
   } catch (e) {
     if (window.WCT) {
       console.warn('if you are using WCT, you do not need to manually import test-fixture.html');

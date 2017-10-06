@@ -1,0 +1,64 @@
+<link rel="import" href="../../../polymer/polymer-element.html">
+<link rel="import" href="../../list-view.html">
+
+<link rel="import" href="todo-item.html">
+
+<link rel="import" href="todo-styles.html">
+
+<dom-module id="todo-items">
+  <template>
+    <style include="todo-styles">
+      :host {
+        display: block;
+      }
+
+      todo-item {
+        border-top: 1px solid #ededed;
+      }
+
+      todo-item:first-child {
+        border-top: none;
+      }
+    </style>
+
+    <section class="main">
+      <input id="ta" class="toggle-all" type="checkbox" checked="[[state.allCompleted]]" on-change="onAllCompletedChange">
+      <label for="ta">Mark all as complete</label>
+      <ul class="todo-list">
+        <template is="dom-repeat" id="list-template" items="[[list]]" as="todoItem" filter="[[filterList(filterBy)]]" observe="completed">
+          <todo-item model="[[todoItem]]"></todo-item>
+        </template>
+      </ul>
+    </section>
+  </template>
+  <script>
+    class TodoItems extends UniFlow.ListView(UniFlow.StateAware(Polymer.Element)) {
+      static get is() {
+        return 'todo-items';
+      }
+
+      filterList(filterBy) {
+        return function (item) {
+          switch (filterBy) {
+            case 'active':
+              return !item.completed;
+            case 'completed':
+              return item.completed;
+            default:
+              return true;
+          }
+        };
+      }
+
+      onAllCompletedChange(event) {
+        this.emitAction({
+          type: todo.actions.SELECTION_CHANGED,
+          applyToAll: true,
+          value: event.target.checked
+        })
+      }
+    }
+
+    customElements.define(TodoItems.is, TodoItems);
+  </script>
+</dom-module>

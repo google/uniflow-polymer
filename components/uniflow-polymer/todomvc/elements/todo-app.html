@@ -1,0 +1,77 @@
+<link rel="import" href="../../../polymer/polymer-element.html">
+<link rel="import" href="../../action-emitter.html">
+<link rel="import" href="../../application-state.html">
+<link rel="import" href="../../../app-route/app-route.html">
+<link rel="import" href="../../../app-route/app-location.html">
+<link rel="import" href="../../../iron-localstorage/iron-localstorage.html">
+
+<link rel="import" href="todo-header.html">
+<link rel="import" href="todo-items.html">
+<link rel="import" href="todo-footer.html">
+<link rel="import" href="todo-action-dispatcher.html">
+
+<link rel="import" href="todo-styles.html">
+
+<dom-module id="todo-app">
+  <template>
+    <style include="todo-styles">
+
+    </style>
+
+    <todo-action-dispatcher state="{{state}}"></todo-action-dispatcher>
+    <section class="todoapp">
+      <app-location route="{{route}}" use-hash-as-path></app-location>
+      <app-route route="{{route}}" pattern="/:filterBy" data="{{routeData}}"></app-route>
+      <iron-localstorage name="todo-list" value="{{state.todoList}}" on-iron-localstorage-load-empty="onStorageLoadEmpty" on-iron-localstorage-load="onStorageLoad">
+      </iron-localstorage>
+      <todo-header></todo-header>
+      <template is="dom-if" if="[[state.todoList.length]]">
+        <!-- This section should be hidden by default and shown when there are todos -->
+        <section class="main">
+          <input class="toggle-all" type="checkbox" checked="[[state.allCompleted]]" on-change="onAllCompletedChange">
+          <label for="toggle-all">Mark all as complete</label>
+          <todo-items id="list" list="[[state.todoList]]" filter-by="[[routeData.filterBy]]">
+          </todo-items>
+        </section>
+        <!-- This footer should hidden by default and shown when there are todos -->
+        <todo-footer filter-by="[[routeData.filterBy]]">
+        </todo-footer>
+      </template>
+    </section>
+
+  </template>
+  <script>
+    class TodoApp extends UniFlow.ActionEmitter(UniFlow.ApplicationState(Polymer.Element)) {
+      static get is() {
+        return 'todo-app';
+      }
+
+      static get properties() {
+        return {
+          route: Object,
+          routeData: Object
+        }
+      }
+
+      ready() {
+        super.ready();
+        this.set('state', {
+          allCompleted: false,
+          activeCount: 0
+        });
+      }
+
+      onStorageLoadEmpty() {
+        this.set('state.todoList', []);
+      }
+
+      onStorageLoad() {
+        this.emitAction({
+          type: todo.actions.INIT_APPLICATION
+        });
+      }
+    }
+
+    customElements.define(TodoApp.is, TodoApp);
+  </script>
+</dom-module>

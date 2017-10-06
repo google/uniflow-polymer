@@ -1,0 +1,7 @@
+{
+  "name": "todo",
+  "short_name": "todo",
+  "description": "ToDo MVC application implemented with UniFlow for Polymer",
+  "start_url": "/",
+  "display": "standalone"
+}

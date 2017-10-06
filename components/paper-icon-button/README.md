@@ -17,14 +17,15 @@ thing! https://github.com/PolymerLabs/tedium/issues
 _[Demo and API docs](https://elements.polymer-project.org/elements/paper-icon-button)_
 
 
-##&lt;paper-icon-button&gt;
+## &lt;paper-icon-button&gt;
 
 Material design: [Icon toggles](https://www.google.com/design/spec/components/buttons.html#buttons-toggle-buttons)
 
 `paper-icon-button` is a button with an image placed at the center. When the user touches
 the button, a ripple effect emanates from the center of the button.
 
-`paper-icon-button` includes a default icon set.  Use `icon` to specify which icon
+`paper-icon-button` does not include a default icon set. To use icons from the default
+set, include `PolymerElements/iron-icons/iron-icons.html`, and use the `icon` attribute to specify which icon
 from the icon set to use.
 
 <!---
@@ -45,7 +46,7 @@ from the icon set to use.
 <paper-icon-button icon="star"></paper-icon-button>
 ```
 
-See [`iron-iconset`](iron-iconset) for more information about
+See [`iron-iconset`](https://github.com/PolymerElements/iron-iconset) for more information about
 how to use a custom icon set.
 
 Example:

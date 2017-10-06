@@ -1,0 +1,44 @@
+<link rel="import" href="../../../polymer/polymer-element.html">
+<link rel="import" href="../../action-emitter.html">
+<link rel="import" href="../../state-aware.html">
+
+<link rel="import" href="todo-styles.html">
+
+<dom-module id="todo-header">
+  <template>
+    <style include="todo-styles">
+
+    </style>
+
+    <header class="header">
+      <h1>todos</h1>
+      <input class="new-todo" placeholder="What needs to be done?" value="{{todoText::input}}" on-keydown="onInputKeyDown" autofocus>
+    </header>
+
+  </template>
+  <script>
+    class TodoHeader extends UniFlow.ActionEmitter(Polymer.Element) {
+      static get is() {
+        return 'todo-header';
+      }
+
+      static properties() {
+        return {
+          todoText: String
+        }
+      }
+
+      onInputKeyDown(e) {
+        if (e.keyCode == 13 && this.todoText.trim().length) {
+          this.emitAction({
+            type: todo.actions.ADD_TODO,
+            text: this.todoText
+          });
+          this.todoText = '';
+        }
+      }
+    }
+
+    customElements.define(TodoHeader.is, TodoHeader);
+  </script>
+</dom-module>

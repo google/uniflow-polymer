@@ -9,8 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../iron-location/iron-location.html">
-<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../paper-styles/typography.html">
+<link rel="import" href="../font-roboto/roboto.html">
 
 <!--
 `url-bar` is a helper element that displays a simple read-only URL bar if
@@ -32,7 +31,7 @@ Custom property | Description | Default
 -->
 <dom-module id='url-bar'>
   <template>
-    <style include="iron-flex">
+    <style>
       :host {
         margin: 0px;
         padding: 15px 35px;
@@ -42,22 +41,40 @@ Custom property | Description | Default
         overflow-x: auto;
         overflow-y: hidden;
         background-color: white;
-        @apply(--url-bar);
+        @apply --url-bar;
       }
-      :host[in-iframe] {
+      :host([in-iframe]) {
         /* This element only wants to be displayed if it's in an iframe. */
         display: block;
       }
+
       label {
-        @apply(--paper-font-common-base);
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        /* for backwards compat */
+        @apply --paper-font-common-base;
         display: inline-block;
         padding-right: 25px;
       }
+
       span {
-        @apply(--paper-font-common-code);
+        font-family: 'Roboto Mono', 'Consolas', 'Menlo', monospace;
+        -webkit-font-smoothing: antialiased;
+        /* for backwards compat */
+        @apply --paper-font-common-code;
         white-space: pre;
       }
+
+      .layout.horizontal {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+      }
     </style>
+
     <iron-location path="{{path}}" query="{{query}}" hash="{{hash}}">
     </iron-location>
     <div class="layout horizontal">
@@ -69,32 +86,42 @@ Custom property | Description | Default
       is: 'url-bar',
       properties: {
         url: {
-          computed: '__computeUrl(path, query, hash)'
+          computed: '__computeUrl(path, query, hash)',
+          type: String
         },
+
         inIframe: {
           value: function() {
             return window.top !== window;
           },
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          type: Boolean
         },
+
         path: {
           type: String
         },
+
         query: {
           type: String
         },
+
         hash: {
           type: String
         }
       },
+
       __computeUrl: function(path, query, hash) {
         var url = path;
+
         if (query) {
           url += '?' + query;
         }
+
         if (hash) {
           url += '#' + hash;
         }
+
         return url;
       }
     })

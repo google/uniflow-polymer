@@ -1,0 +1,2644 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "",
+      "summary": "",
+      "path": "todomvc/elements/todo-header.html",
+      "properties": [],
+      "methods": [
+        {
+          "name": "onInputKeyDown",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 30,
+              "column": 6
+            },
+            "end": {
+              "line": 38,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 19,
+          "column": 4
+        },
+        "end": {
+          "line": 39,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "TodoHeader",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "todo-header"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "todomvc/elements/todo-item.html",
+      "properties": [
+        {
+          "name": "filterBy",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 129,
+              "column": 10
+            },
+            "end": {
+              "line": 129,
+              "column": 26
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "isEditing",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 130,
+              "column": 10
+            },
+            "end": {
+              "line": 133,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "onCompletedChange",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 137,
+              "column": 6
+            },
+            "end": {
+              "line": 143,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "_removeTodo",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 145,
+              "column": 6
+            },
+            "end": {
+              "line": 150,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "onDestroyTap",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 152,
+              "column": 6
+            },
+            "end": {
+              "line": 154,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "onViewDblClick",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 156,
+              "column": 6
+            },
+            "end": {
+              "line": 160,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "onInputBlur",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 162,
+              "column": 6
+            },
+            "end": {
+              "line": 166,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "_confirmEdit",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 168,
+              "column": 6
+            },
+            "end": {
+              "line": 178,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "onInputKeyDown",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 180,
+              "column": 6
+            },
+            "end": {
+              "line": 186,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 120,
+          "column": 4
+        },
+        "end": {
+          "line": 187,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "TodoItem",
+      "attributes": [
+        {
+          "name": "filter-by",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 129,
+              "column": 10
+            },
+            "end": {
+              "line": 129,
+              "column": 26
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "is-editing",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 130,
+              "column": 10
+            },
+            "end": {
+              "line": 133,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "todo-item"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "todomvc/elements/todo-items.html",
+      "properties": [],
+      "methods": [
+        {
+          "name": "filterList",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 39,
+              "column": 6
+            },
+            "end": {
+              "line": 50,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "filterBy"
+            }
+          ]
+        },
+        {
+          "name": "onAllCompletedChange",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 52,
+              "column": 6
+            },
+            "end": {
+              "line": 58,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 34,
+          "column": 4
+        },
+        "end": {
+          "line": 59,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "TodoItems",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "todo-items"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "todomvc/elements/todo-footer.html",
+      "properties": [
+        {
+          "name": "filterBy",
+          "type": "string",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 47,
+              "column": 10
+            },
+            "end": {
+              "line": 47,
+              "column": 26
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "completedCount",
+          "type": "number",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 48,
+              "column": 10
+            },
+            "end": {
+              "line": 51,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "isEqual",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 55,
+              "column": 6
+            },
+            "end": {
+              "line": 57,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "val1"
+            },
+            {
+              "name": "val2"
+            }
+          ]
+        },
+        {
+          "name": "getCompletedCount",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 59,
+              "column": 6
+            },
+            "end": {
+              "line": 61,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "totalCount"
+            },
+            {
+              "name": "activeCount"
+            }
+          ]
+        },
+        {
+          "name": "onClearCompletedButtonTap",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 63,
+              "column": 6
+            },
+            "end": {
+              "line": 67,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 39,
+          "column": 4
+        },
+        "end": {
+          "line": 68,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "TodoFooter",
+      "attributes": [
+        {
+          "name": "filter-by",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 47,
+              "column": 10
+            },
+            "end": {
+              "line": 47,
+              "column": 26
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "completed-count",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 48,
+              "column": 10
+            },
+            "end": {
+              "line": 51,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "todo-footer"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "todomvc/elements/todo-action-dispatcher.html",
+      "properties": [],
+      "methods": [
+        {
+          "name": "_updateAllCompleted",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 12
+            },
+            "end": {
+              "line": 18,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_updateActiveCount",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 20,
+              "column": 12
+            },
+            "end": {
+              "line": 23,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "todo.actions.INIT_APPLICATION",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 25,
+              "column": 12
+            },
+            "end": {
+              "line": 28,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "name": "todo.actions.ADD_TODO",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 30,
+              "column": 12
+            },
+            "end": {
+              "line": 36,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "name": "todo.actions.UPDATE_TODO",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 38,
+              "column": 12
+            },
+            "end": {
+              "line": 41,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "name": "todo.actions.REMOVE_TODO",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 43,
+              "column": 12
+            },
+            "end": {
+              "line": 48,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "name": "todo.actions.SELECTION_CHANGED",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 12
+            },
+            "end": {
+              "line": 65,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "details"
+            }
+          ]
+        },
+        {
+          "name": "todo.actions.CLEAR_COMPLETED",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 67,
+              "column": 12
+            },
+            "end": {
+              "line": 75,
+              "column": 13
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "details"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 6,
+          "column": 8
+        },
+        "end": {
+          "line": 76,
+          "column": 9
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "TodpActionDispatcher",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "todo-action-dispatcher"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "todomvc/elements/todo-app.html",
+      "properties": [
+        {
+          "name": "route",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 10
+            },
+            "end": {
+              "line": 50,
+              "column": 23
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "routeData",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 51,
+              "column": 10
+            },
+            "end": {
+              "line": 51,
+              "column": 27
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 55,
+              "column": 6
+            },
+            "end": {
+              "line": 61,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "onStorageLoadEmpty",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 63,
+              "column": 6
+            },
+            "end": {
+              "line": 65,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "onStorageLoad",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 67,
+              "column": 6
+            },
+            "end": {
+              "line": 71,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 43,
+          "column": 4
+        },
+        "end": {
+          "line": 72,
+          "column": 5
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "TodoApp",
+      "attributes": [
+        {
+          "name": "route",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 10
+            },
+            "end": {
+              "line": 50,
+              "column": 23
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "route-data",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 51,
+              "column": 10
+            },
+            "end": {
+              "line": 51,
+              "column": 27
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "todo-app"
+    }
+  ],
+  "mixins": [
+    {
+      "description": "   Key mixin that must be assigned to all elements that need to access\n   application state and/or have access to the application element. The element is\n   notified of any changes to application's state, as well as all its properties\n   when they're modified by state mutator elements. `state-path` property must\n   be used to identify path to element's state in application state tree. \n\n   ### Example:\n\n   #### HTML:\n\n      <template>\n\n        <div>Value A: [[state.valueA]]</div>\n        <div>Value B: [[valueB]]</div>\n\n      </template>\n\n   #### JavaScript:\n\n      class MyElement extends UniFlow.StateAware(Polymer.Element) {\n        static get is() { return 'my-element'; }\n\n        static get properties() {\n          return {\n            valueB: String\n          }\n        }\n      }\n\n      customElement.define(MyElement.is, MyElement);\n\n   When above element is declared as follows:\n\n      <my-element state-path=\"state.myElement\"></my-element>\n\n   it will be notified about changes (and render those) to `state.valueA` or\n   `state.myElement.valueB` in action dispatchers or other state mutating\n   elements.\n\n   ",
+      "summary": "",
+      "path": "state-aware.html",
+      "properties": [
+        {
+          "name": "state",
+          "type": "Object",
+          "description": "Application state, shared among application and all state-aware elements.\nThis property is initialized when element is attached.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 74,
+              "column": 10
+            },
+            "end": {
+              "line": 76,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "statePath",
+          "type": "string",
+          "description": "Path to element state in the application state tree.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 81,
+              "column": 10
+            },
+            "end": {
+              "line": 83,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "stateAware",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 10
+            },
+            "end": {
+              "line": 89,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "true"
+        },
+        {
+          "name": "application",
+          "type": "Object",
+          "description": "Application-level object that allows all state-aware objects access\nto application element. This property is shared among all state-aware\nelements and has element field initialized with reference to application\nelement. Any state-aware element can access application element using\n`getApplication()` method. Also, all state-aware elements\nadd themselves to `application.stateAwareElements` array on attach (and\nremove on detach); this list is used to send notification about\nelement state changes.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 101,
+              "column": 10
+            },
+            "end": {
+              "line": 107,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "Adds this element to the list of state-aware elements in the application.\nSets the value of state property to the state of the application element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 116,
+              "column": 6
+            },
+            "end": {
+              "line": 132,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "Removes this element from the list of state-aware elements in the\napplication.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 138,
+              "column": 6
+            },
+            "end": {
+              "line": 145,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "getApplication",
+          "description": "Returns application element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "Element"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 65,
+          "column": 2
+        },
+        "end": {
+          "line": 155,
+          "column": 6
+        }
+      },
+      "privacy": "public",
+      "name": "UniFlow.StateAware",
+      "attributes": [
+        {
+          "name": "state",
+          "description": "Application state, shared among application and all state-aware elements.\nThis property is initialized when element is attached.",
+          "sourceRange": {
+            "start": {
+              "line": 74,
+              "column": 10
+            },
+            "end": {
+              "line": 76,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "state-path",
+          "description": "Path to element state in the application state tree.",
+          "sourceRange": {
+            "start": {
+              "line": 81,
+              "column": 10
+            },
+            "end": {
+              "line": 83,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        },
+        {
+          "name": "state-aware",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 10
+            },
+            "end": {
+              "line": 89,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        },
+        {
+          "name": "application",
+          "description": "Application-level object that allows all state-aware objects access\nto application element. This property is shared among all state-aware\nelements and has element field initialized with reference to application\nelement. Any state-aware element can access application element using\n`getApplication()` method. Also, all state-aware elements\nadd themselves to `application.stateAwareElements` array on attach (and\nremove on detach); this list is used to send notification about\nelement state changes.",
+          "sourceRange": {
+            "start": {
+              "line": 101,
+              "column": 10
+            },
+            "end": {
+              "line": 107,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "   Some non-visual elements, like action dispatchers, need to modify application\n   state, in which case they should have this mixin applied. Implements state-\n   aware and re-declares state property with notify attribute. State mutator elements\n   are only supposed to exist at the application level.\n\n   ",
+      "summary": "",
+      "path": "state-mutator.html",
+      "properties": [
+        {
+          "name": "state",
+          "type": "Object",
+          "description": "Application state.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 41,
+              "column": 10
+            },
+            "end": {
+              "line": 44,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          }
+        },
+        {
+          "name": "statePath",
+          "type": "string",
+          "description": "Path to element state in the application state tree.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 81,
+              "column": 10
+            },
+            "end": {
+              "line": 83,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "stateAware",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 85,
+              "column": 10
+            },
+            "end": {
+              "line": 89,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "true",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "application",
+          "type": "Object",
+          "description": "Application-level object that allows all state-aware objects access\nto application element. This property is shared among all state-aware\nelements and has element field initialized with reference to application\nelement. Any state-aware element can access application element using\n`getApplication()` method. Also, all state-aware elements\nadd themselves to `application.stateAwareElements` array on attach (and\nremove on detach); this list is used to send notification about\nelement state changes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 101,
+              "column": 10
+            },
+            "end": {
+              "line": 107,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "Adds this element to the list of state-aware elements in the application.\nSets the value of state property to the state of the application element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 116,
+              "column": 6
+            },
+            "end": {
+              "line": 132,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "Removes this element from the list of state-aware elements in the\napplication.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 138,
+              "column": 6
+            },
+            "end": {
+              "line": 145,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "getApplication",
+          "description": "Returns application element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 151,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "Element"
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 33,
+          "column": 2
+        },
+        "end": {
+          "line": 48,
+          "column": 6
+        }
+      },
+      "privacy": "public",
+      "name": "UniFlow.StateMutator",
+      "attributes": [
+        {
+          "name": "state",
+          "description": "Application state.",
+          "sourceRange": {
+            "start": {
+              "line": 41,
+              "column": 10
+            },
+            "end": {
+              "line": 44,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "state-path",
+          "description": "Path to element state in the application state tree.",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 81,
+              "column": 10
+            },
+            "end": {
+              "line": 83,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "state-aware",
+          "description": "",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 85,
+              "column": 10
+            },
+            "end": {
+              "line": 89,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "application",
+          "description": "Application-level object that allows all state-aware objects access\nto application element. This property is shared among all state-aware\nelements and has element field initialized with reference to application\nelement. Any state-aware element can access application element using\n`getApplication()` method. Also, all state-aware elements\nadd themselves to `application.stateAwareElements` array on attach (and\nremove on detach); this list is used to send notification about\nelement state changes.",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 101,
+              "column": 10
+            },
+            "end": {
+              "line": 107,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "UniFlow.StateAware"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "mixins": [
+        "UniFlow.StateAware"
+      ]
+    },
+    {
+      "description": "   Use UniFlow.ActionDispatcher for non-visual elements that process actions emitted by visual\n   elements. Action dispatchers usually placed at the application level. Each action dispatcher\n   element gets a chance to process the action in the order the elements are present in the\n   DOM tree. It is important that action dispatcher elements get two-way data binding to\n   application state as follows:\n\n      <action-dispatcher state=\"{{state}}\"></action-dispatcher>\n\n   Action dispatcher elements can include nested action dispatchers, so you can have a\n   hierarchical organization of action dispatchers.\n\n   ### Example:\n\n   #### HTML:\n\n      <dom-module id=\"parent-dispatcher\">\n        <template>\n          <child-dispatcher-a state=\"{{state}}\"></child-dispatcher-a>\n          <child-dispatcher-b state=\"{{state}}\"></child-dispatcher-b>\n        </template>\n      </dom-module>\n\n   #### JavaScript:\n       class ParentDispatcher extends UniFlow.ActionDispatcher(Polymer.Element) {\n         static get is() { return 'parent-dispatcher'; }\n\n         MY_ACTION(detail) {\n           // do MY_ACTION processing here\n           // return false if you want to prevent other action dispatchers from\n           // further processing of this action\n         };\n       }\n\n       customElements.define(ParentDispatcher.is, ParentDispatcher);\n\n   ",
+      "summary": "",
+      "path": "action-dispatcher.html",
+      "properties": [
+        {
+          "name": "state",
+          "type": "Object",
+          "description": "Application state.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-mutator.html",
+            "start": {
+              "line": 41,
+              "column": 10
+            },
+            "end": {
+              "line": 44,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "UniFlow.StateMutator"
+        },
+        {
+          "name": "statePath",
+          "type": "string",
+          "description": "Path to element state in the application state tree.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 81,
+              "column": 10
+            },
+            "end": {
+              "line": 83,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "stateAware",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 85,
+              "column": 10
+            },
+            "end": {
+              "line": 89,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "true",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "application",
+          "type": "Object",
+          "description": "Application-level object that allows all state-aware objects access\nto application element. This property is shared among all state-aware\nelements and has element field initialized with reference to application\nelement. Any state-aware element can access application element using\n`getApplication()` method. Also, all state-aware elements\nadd themselves to `application.stateAwareElements` array on attach (and\nremove on detach); this list is used to send notification about\nelement state changes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 101,
+              "column": 10
+            },
+            "end": {
+              "line": 107,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "actionDispatcher",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 10
+            },
+            "end": {
+              "line": 72,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "true"
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "Adds this element to the list of state-aware elements in the application.\nSets the value of state property to the state of the application element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 116,
+              "column": 6
+            },
+            "end": {
+              "line": 132,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "Removes this element from the list of state-aware elements in the\napplication.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 138,
+              "column": 6
+            },
+            "end": {
+              "line": 145,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "getApplication",
+          "description": "Returns application element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 151,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "Element"
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "dispatchAction",
+          "description": "Dispatches action by invoking the method with the name that matches\naction type (`detail.type`) passing detail object as a parameter;\nalso selects all children action dispatchers in the element's DOM tree and\ninvokes dispatchAction method on them. False returned by an action dispatcher method\nresults in dispatchAction method returning false (which in turn stops further processing\nof the action by other action dispatchers).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 87,
+              "column": 6
+            },
+            "end": {
+              "line": 106,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "detail",
+              "type": "{type: string}"
+            }
+          ],
+          "return": {
+            "type": "boolean"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 64,
+          "column": 2
+        },
+        "end": {
+          "line": 108,
+          "column": 6
+        }
+      },
+      "privacy": "public",
+      "name": "UniFlow.ActionDispatcher",
+      "attributes": [
+        {
+          "name": "state",
+          "description": "Application state.",
+          "sourceRange": {
+            "file": "state-mutator.html",
+            "start": {
+              "line": 41,
+              "column": 10
+            },
+            "end": {
+              "line": 44,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "UniFlow.StateMutator"
+        },
+        {
+          "name": "state-path",
+          "description": "Path to element state in the application state tree.",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 81,
+              "column": 10
+            },
+            "end": {
+              "line": 83,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "state-aware",
+          "description": "",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 85,
+              "column": 10
+            },
+            "end": {
+              "line": 89,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "application",
+          "description": "Application-level object that allows all state-aware objects access\nto application element. This property is shared among all state-aware\nelements and has element field initialized with reference to application\nelement. Any state-aware element can access application element using\n`getApplication()` method. Also, all state-aware elements\nadd themselves to `application.stateAwareElements` array on attach (and\nremove on detach); this list is used to send notification about\nelement state changes.",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 101,
+              "column": 10
+            },
+            "end": {
+              "line": 107,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "action-dispatcher",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 10
+            },
+            "end": {
+              "line": 72,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "mixins": [
+        "UniFlow.StateMutator"
+      ]
+    },
+    {
+      "description": "   Whenever element needs to emit an action, this mixin should be applied.\n   Action object must always include type property.\n\n   ",
+      "summary": "",
+      "path": "action-emitter.html",
+      "properties": [],
+      "methods": [
+        {
+          "name": "emitAction",
+          "description": "Emits the action described by detail parameter. Detail object must always\ninclude type property. To emit the action we use custom event\nmechanism. Application element listens to the `dispatch-action` event and\ninvokes `dispatchAction` methods for all action dispatchers associated with\nthe application. Make sure your element is attached to DOM tree, otherwise\nevent will never reach your application element. It is a good practice to\nensure that `state` property is initialized (for state-aware elements) before\nemitting any actions (as `state` property is initialized on attach).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 6
+            },
+            "end": {
+              "line": 62,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "detail",
+              "type": "*"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 29,
+          "column": 2
+        },
+        "end": {
+          "line": 64,
+          "column": 6
+        }
+      },
+      "privacy": "public",
+      "name": "UniFlow.ActionEmitter",
+      "attributes": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "dispatch-action",
+          "description": "dispatch-action",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "   Apply this mixin to your main application element. It provides global\n   state and functionality to maintain individual elements states. This mixin\n   is responsible for notifying all state-aware elements about their state\n   changes (provided those elements have `statePath` property defined).\n   Only one element in the application is supposed to have this mixin.\n\n   ### Example:\n\n   #### HTML:\n\n       <template>\n\n         <!-- action dispatchers in the order of action processing -->\n         <action-dispatcher-a state=\"{{state}}\"></action-dispatcher-a>\n         <action-dispatcher-b state=\"{{state}}\"></action-dispatcher-b>\n\n         <!-- state-aware elements -->\n         <some-element state-path=\"state.someElement\"></some-element>\n\n       </template>\n\n   #### JavaScript:\n       class MyApp extends UniFlow.ApplicationState(Polymer.Element) {\n         static get is() { return 'my-app'; }\n\n         connectedCallback() {\n           super.ConnectedCallback();\n\n           this.state = {\n             someElement: {}\n           }\n         }\n       }\n\n       customElements.define(MyApp.is,MyApp);\n\n   In the example above, `<some-element>` will receive notification of any changes to the state,\n   as if it was declared as follows:\n\n       <some-element state=\"[[state]]\"></some-element>\n\n   Also, if `<some-element>` has `propertyA`, on element attach this property will be assigned\n   the value of `state.someElement.propertyA`, and receive all notification of the property change\n   whenever the corresponding data in state tree changes. This essentially translates to following\n   declaration:\n\n       <some-element state=\"[[state]]\"\n                     propertyA=\"[[state.someElement.propertyA]]\">\n       </some-element>\n\n   Note that data binding is one-way in both cases. Although state-aware elements can modify their\n   own state, it is considered their private state and no other elements will be notified of those\n   changes.\n\n   ",
+      "summary": "",
+      "path": "application-state.html",
+      "properties": [
+        {
+          "name": "state",
+          "type": "Object",
+          "description": "Application state.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-mutator.html",
+            "start": {
+              "line": 41,
+              "column": 10
+            },
+            "end": {
+              "line": 44,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "inheritedFrom": "UniFlow.StateMutator"
+        },
+        {
+          "name": "statePath",
+          "type": "string",
+          "description": "Path to element state in the application state tree.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 81,
+              "column": 10
+            },
+            "end": {
+              "line": 83,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "stateAware",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 85,
+              "column": 10
+            },
+            "end": {
+              "line": 89,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "true",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "application",
+          "type": "Object",
+          "description": "Application-level object that allows all state-aware objects access\nto application element. This property is shared among all state-aware\nelements and has element field initialized with reference to application\nelement. Any state-aware element can access application element using\n`getApplication()` method. Also, all state-aware elements\nadd themselves to `application.stateAwareElements` array on attach (and\nremove on detach); this list is used to send notification about\nelement state changes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 101,
+              "column": 10
+            },
+            "end": {
+              "line": 107,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "actionDispatcher",
+          "type": "boolean",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "action-dispatcher.html",
+            "start": {
+              "line": 68,
+              "column": 10
+            },
+            "end": {
+              "line": 72,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "true",
+          "inheritedFrom": "UniFlow.ActionDispatcher"
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 6
+            },
+            "end": {
+              "line": 103,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "disconnectedCallback",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 105,
+              "column": 6
+            },
+            "end": {
+              "line": 108,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "getApplication",
+          "description": "Returns application element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 151,
+              "column": 6
+            },
+            "end": {
+              "line": 153,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "Element"
+          },
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "dispatchAction",
+          "description": "Dispatches action by invoking the method with the name that matches\naction type (`detail.type`) passing detail object as a parameter;\nalso selects all children action dispatchers in the element's DOM tree and\ninvokes dispatchAction method on them. False returned by an action dispatcher method\nresults in dispatchAction method returning false (which in turn stops further processing\nof the action by other action dispatchers).",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "action-dispatcher.html",
+            "start": {
+              "line": 87,
+              "column": 6
+            },
+            "end": {
+              "line": 106,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "detail",
+              "type": "{type: string}"
+            }
+          ],
+          "return": {
+            "type": "boolean"
+          },
+          "inheritedFrom": "UniFlow.ActionDispatcher"
+        },
+        {
+          "name": "onDispatchAction_",
+          "description": "Application state listens to dispatch-action method and invokes\ndispatchAction method on itself (which in turn invokes dispatchAction\non all action dispatchers declared within application element).",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 119,
+              "column": 6
+            },
+            "end": {
+              "line": 121,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event",
+              "type": "!Event"
+            }
+          ]
+        },
+        {
+          "name": "stateChanged_",
+          "description": "Called when state.* changes. Notifies state-aware elements of their\nstate changes, if applicable.",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 130,
+              "column": 6
+            },
+            "end": {
+              "line": 132,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "change",
+              "type": "!Object",
+              "description": "the Polymer change event for the path"
+            }
+          ]
+        },
+        {
+          "name": "notifyStateAwareElements_",
+          "description": "Iterates through the array of state-aware elements in the application\nand notifies them about their state change, if applicable. Note that\nstate-aware elements must be attached to DOM tree in order to receive\nnotifications.",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 6
+            },
+            "end": {
+              "line": 166,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "change"
+            }
+          ]
+        },
+        {
+          "name": "ready",
+          "description": "Sets application.element value to this element (so all state-aware elements\nhave access to application element).",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 172,
+              "column": 6
+            },
+            "end": {
+              "line": 175,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 85,
+          "column": 2
+        },
+        "end": {
+          "line": 177,
+          "column": 6
+        }
+      },
+      "privacy": "public",
+      "name": "UniFlow.ApplicationState",
+      "attributes": [
+        {
+          "name": "state",
+          "description": "Application state.",
+          "sourceRange": {
+            "file": "state-mutator.html",
+            "start": {
+              "line": 41,
+              "column": 10
+            },
+            "end": {
+              "line": 44,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "UniFlow.StateMutator"
+        },
+        {
+          "name": "state-path",
+          "description": "Path to element state in the application state tree.",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 81,
+              "column": 10
+            },
+            "end": {
+              "line": 83,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "string",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "state-aware",
+          "description": "",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 85,
+              "column": 10
+            },
+            "end": {
+              "line": 89,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "application",
+          "description": "Application-level object that allows all state-aware objects access\nto application element. This property is shared among all state-aware\nelements and has element field initialized with reference to application\nelement. Any state-aware element can access application element using\n`getApplication()` method. Also, all state-aware elements\nadd themselves to `application.stateAwareElements` array on attach (and\nremove on detach); this list is used to send notification about\nelement state changes.",
+          "sourceRange": {
+            "file": "state-aware.html",
+            "start": {
+              "line": 101,
+              "column": 10
+            },
+            "end": {
+              "line": 107,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object",
+          "inheritedFrom": "UniFlow.StateAware"
+        },
+        {
+          "name": "action-dispatcher",
+          "description": "",
+          "sourceRange": {
+            "file": "action-dispatcher.html",
+            "start": {
+              "line": 68,
+              "column": 10
+            },
+            "end": {
+              "line": 72,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "boolean",
+          "inheritedFrom": "UniFlow.ActionDispatcher"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "mixins": [
+        "UniFlow.ActionDispatcher"
+      ]
+    },
+    {
+      "description": "   This mixin used by elements that need to render multiple models backed\n   by 'list' array. You may want to use ModelView to render individual\n   models in the list. The mixin supports element selection by setting predefined\n   $selected property on list elements.\n\n   ### Example:\n\n   #### HTML:\n\n       <ul>\n         <template id=\"list-template\" is=\"dom-repeat\" items=\"[[list]]\">\n           <li id=\"[[item.id]]\">\n             <paper-checkbox checked=\"{{item.$selected}}\">\n             <model-view state-path=\"[[statePath]].list.#[[index]]\"></model-view>\n           </li>\n         </template>\n       </ul>\n       Selected: [[selectedCount]] items\n       <paper-button on-tap=\"onDeleteTap\">Delete</paper-button>\n\n   #### JavaScript:\n       class ListElement extends UniFlow.StateAware(UniFlow.ListView(Polymer.Element)) {\n         static get is() { return \"list-element\"; }\n\n         onDeleteTap() {\n           this.deleteSelected();\n         }\n       }\n\n       customElements.define(ListElement.is, ListElement);\n\n   In the example above list view element is also state-aware, meaning it has its own place\n   in the application state tree. Assuming it has been declared as follows:\n\n       <list-element state-path=\"state.listElement\"></list-element>\n\n   it will be rendering `state.listElement.list` and observing changes to it. Each `model-view`\n   within dom-repeat template will have `state-path` property  set to\n   `state.listElement.list.#<index>`  where `index` is the element's index in the array.\n\n\n   ",
+      "summary": "",
+      "path": "list-view.html",
+      "properties": [
+        {
+          "name": "list",
+          "type": "Array",
+          "description": "Array which data is to be rendered by the element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 10
+            },
+            "end": {
+              "line": 81,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "[]"
+        },
+        {
+          "name": "selectedCount",
+          "type": "number",
+          "description": "If element supports item selection (using meta-property $selected) then\nselectedCount property will keep track of number of selected items.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 87,
+              "column": 10
+            },
+            "end": {
+              "line": 91,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "0"
+        },
+        {
+          "name": "deleteAction",
+          "type": "string",
+          "description": "Action name that will be emitted when deleteSelected method is called\nwithout parameter.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 97,
+              "column": 30
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "emitAction",
+          "description": "Emits the action described by detail parameter. Detail object must always\ninclude type property. To emit the action we use custom event\nmechanism. Application element listens to the `dispatch-action` event and\ninvokes `dispatchAction` methods for all action dispatchers associated with\nthe application. Make sure your element is attached to DOM tree, otherwise\nevent will never reach your application element. It is a good practice to\nensure that `state` property is initialized (for state-aware elements) before\nemitting any actions (as `state` property is initialized on attach).",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "action-emitter.html",
+            "start": {
+              "line": 50,
+              "column": 6
+            },
+            "end": {
+              "line": 62,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "detail",
+              "type": "*"
+            }
+          ],
+          "inheritedFrom": "UniFlow.ActionEmitter"
+        },
+        {
+          "name": "itemChanged_",
+          "description": "Whenever list is set or mutated (elements added/removed), as well as\nmeta-property $selected is modified, updates selectedCount.",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 114,
+              "column": 6
+            },
+            "end": {
+              "line": 121,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "change",
+              "type": "!Object"
+            }
+          ]
+        },
+        {
+          "name": "updateSelectedCount_",
+          "description": "Updates selectedCount property of the element by iterating the list and\ncounting each item that has meta-property $selected set.",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 128,
+              "column": 6
+            },
+            "end": {
+              "line": 134,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "deleteSelected",
+          "description": "Emits deleteAction for each selected element in the list (for which\nmeta-property $selected is set).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 143,
+              "column": 6
+            },
+            "end": {
+              "line": 157,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "deleteAction",
+              "type": "string=",
+              "description": "Action type for the action that  will be emitted\n    for each selected element. If not specified, `deleteAction` property of the element\n    will be used."
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 70,
+          "column": 2
+        },
+        "end": {
+          "line": 159,
+          "column": 6
+        }
+      },
+      "privacy": "public",
+      "name": "UniFlow.ListView",
+      "attributes": [
+        {
+          "name": "list",
+          "description": "Array which data is to be rendered by the element.",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 10
+            },
+            "end": {
+              "line": 81,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Array"
+        },
+        {
+          "name": "selected-count",
+          "description": "If element supports item selection (using meta-property $selected) then\nselectedCount property will keep track of number of selected items.",
+          "sourceRange": {
+            "start": {
+              "line": 87,
+              "column": 10
+            },
+            "end": {
+              "line": 91,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "number"
+        },
+        {
+          "name": "delete-action",
+          "description": "Action name that will be emitted when deleteSelected method is called\nwithout parameter.",
+          "sourceRange": {
+            "start": {
+              "line": 97,
+              "column": 10
+            },
+            "end": {
+              "line": 97,
+              "column": 30
+            }
+          },
+          "metadata": {},
+          "type": "string"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "dispatch-action",
+          "description": "dispatch-action",
+          "metadata": {},
+          "inheritedFrom": "UniFlow.ActionEmitter"
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "mixins": [
+        "UniFlow.ActionEmitter"
+      ]
+    },
+    {
+      "description": "   Element rendering data represented by a single object (model) in the\n   application state should use ModelView mixin. Model View is a powerful\n   concept that encapsulates model data (likely the data received from the\n   server and to be persisted to the server if modified as a result of user\n   actions), status (validity of the data, flag that data was modified,\n   notifications for the user, etc.). Auxiliary data supplied by action\n   dispatchers and needed for display purposes or element's logic\n   should be defined as element’s properties. Same applies to data\n   created/modified by the element but not intended to be persisted.\n   If `StateAware` mixin is used along with `ModelView`, you can take advantage\n   of statePath property that indicates path to the element's state in the\n   application state tree. Whenever any data is mutated by action dispatchers\n   at statePath or below, the element will receive notification of its\n   properties' change (even if there is no explicit binding for those\n   properties). See `UniFlow.StateAware` for more details and example.\n   ModelView mixin defines some properties that are intended to be overridden\n   in the elements:\n\n   + `validation` property allows to specify validation rules\n   that will be applied when validateModel() method is called. As a result of\n   this method validation status will be updated to indicate result for each\n   model field that has validation rule associated with it.\n   + `saveAction` property indicates which action should be emitted when\n   saveModel method is called to perform save of the model.\n   + `getMessage` should be overridden with the function returning message\n   string for given error code (to translate validation error code to message)\n\n\n   ### Example:\n\n   #### HTML:\n\n      <template>\n        Model: [[model.id]]\n        <paper-input value=\"{{model.name}}\"\n                     label=\"Name\"\n                     invalid=\"[[status.validation.name.invalid]]\"\n                     error-message=\"[[status.validation.name.errorMessage]]\">\n        </paper-input>\n        <paper-button on-tap=\"onSaveTap\">Save</paper-button>\n      </template>\n\n   #### JavaScript:\n      class MyModel extends UniFlow.ModelView(Polymer.Element) {\n        static get is() { return \"my-model\"; }\n        \n        get saveAction() { return 'MY_SAVE' }\n\n        get validation() { return {\n          name: (value) => {\n            if (!value || !value.trim()) {\n              return 'Name is not specified';\n            }\n          }\n        }}\n\n        connectedCallback() {\n          this.super();\n          this.fetchData();\n        },\n\n        fetchData() {\n          this.emitAction({\n            type: 'MY_FETCH',\n            path: 'model'\n          });\n        },\n\n        onSaveTap() {\n          this.validateAndSave();\n        }\n      }\n\n      customElements.define(MyModel.is, MyModel);\n\n   In the example above model view has input field for `name` property and Save button. On\n   element attach the action is emitted to fetch the model's data. Note that in `emitAction()` method\n   the path is specified as `'model'`. ActionEmitter mixin is responsible of expanding the path\n   with element's state path, ensuring that when action dispatcher gets to process the action, the\n   path contains full path in the state tree. So assuming that `my-model` is declared as follows:\n\n      <my-model state-path=\"state.myModel\"></my-model>\n\n   the path in `MY_FETCH` action gets expanded to `state.myModel.model`.\n\n   `validation` property is an object that contains methods for fields validation. The keys in\n   this object should match model field names, the values are validation methods. Method receives\n   current value of the field and should return non-falsy value (string or error code) if the value\n   of the field didn't pass validation. `status.validation` object will be populated with the results\n   of validation with the keys matching field names and values being objects containing two fields:\n   - `invalid`: true when the value is not valid\n   - `errorMessage`: the message to show to user\n\n\n   So in the example above if user clicks on Save button with name not entered, they will get\n   'Name is not specified' error message on the input element. When the name is non-empty, validation\n   will pass and `MY_SAVE` action will be emitted with model passed as a parameter and `'model'` as\n   path.\n\n\n   ",
+      "summary": "",
+      "path": "model-view.html",
+      "properties": [
+        {
+          "name": "model",
+          "type": "Object",
+          "description": "Object containing model data, usually mirroring server-side object.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 138,
+              "column": 10
+            },
+            "end": {
+              "line": 140,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "status",
+          "type": "Object",
+          "description": "Object to contain model status, including validity of the data,\nflag that data was modified, notifications for the user, etc.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 146,
+              "column": 10
+            },
+            "end": {
+              "line": 148,
+              "column": 11
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "emitAction",
+          "description": "Emits the action described by detail parameter. Detail object must always\ninclude type property. To emit the action we use custom event\nmechanism. Application element listens to the `dispatch-action` event and\ninvokes `dispatchAction` methods for all action dispatchers associated with\nthe application. Make sure your element is attached to DOM tree, otherwise\nevent will never reach your application element. It is a good practice to\nensure that `state` property is initialized (for state-aware elements) before\nemitting any actions (as `state` property is initialized on attach).",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "action-emitter.html",
+            "start": {
+              "line": 50,
+              "column": 6
+            },
+            "end": {
+              "line": 62,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "detail",
+              "type": "*"
+            }
+          ],
+          "inheritedFrom": "UniFlow.ActionEmitter"
+        },
+        {
+          "name": "getMessage",
+          "description": "Function that translates error code (numeric or text) into human readable\nerror message (used to translate validation error code into error text).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 180,
+              "column": 6
+            },
+            "end": {
+              "line": 182,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "saveModel",
+          "description": "Method emitting passed action or this.saveAction, sending model with\nthe action options.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 195,
+              "column": 6
+            },
+            "end": {
+              "line": 211,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "action",
+              "type": "(Object|string)="
+            }
+          ]
+        },
+        {
+          "name": "initValidationStatus_",
+          "description": "Method initializes status.validation object with invalid = false for all\nkeys defined in this.validation object. This is needed for proper UI\nbinding (if the value of invalid attribute is undefined, paper-input is\nmisbehaving).",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 220,
+              "column": 6
+            },
+            "end": {
+              "line": 230,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "validateModel",
+          "description": "Performs validation of model object according to rules defined in\nthis.validation object. Sets status.validation.<property-name> fields with\ntwo properties: invalid and errorMessage.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 240,
+              "column": 6
+            },
+            "end": {
+              "line": 260,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "boolean",
+            "desc": "True if all fields validated successfully (or\n    this.validation is not defined in the element)."
+          }
+        },
+        {
+          "name": "validateAndSave",
+          "description": "Validates and saves model if there were no validation errors.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 266,
+              "column": 6
+            },
+            "end": {
+              "line": 270,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "action",
+              "type": "string=",
+              "description": "Optional action type to emit for save action."
+            }
+          ]
+        },
+        {
+          "name": "modelViewModelChanged_",
+          "description": "Observer of any changes to the model. Resets status object and initializes\nvalidation status.",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 278,
+              "column": 6
+            },
+            "end": {
+              "line": 292,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "change",
+              "type": "!Object"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 129,
+          "column": 2
+        },
+        "end": {
+          "line": 294,
+          "column": 6
+        }
+      },
+      "privacy": "public",
+      "name": "UniFlow.ModelView",
+      "attributes": [
+        {
+          "name": "model",
+          "description": "Object containing model data, usually mirroring server-side object.",
+          "sourceRange": {
+            "start": {
+              "line": 138,
+              "column": 10
+            },
+            "end": {
+              "line": 140,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        },
+        {
+          "name": "status",
+          "description": "Object to contain model status, including validity of the data,\nflag that data was modified, notifications for the user, etc.",
+          "sourceRange": {
+            "start": {
+              "line": 146,
+              "column": 10
+            },
+            "end": {
+              "line": 148,
+              "column": 11
+            }
+          },
+          "metadata": {},
+          "type": "Object"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "dispatch-action",
+          "description": "dispatch-action",
+          "metadata": {},
+          "inheritedFrom": "UniFlow.ActionEmitter"
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "mixins": [
+        "UniFlow.ActionEmitter"
+      ]
+    }
+  ]
+}

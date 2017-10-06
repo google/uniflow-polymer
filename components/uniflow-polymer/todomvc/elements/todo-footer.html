@@ -1,0 +1,73 @@
+<link rel="import" href="../../../polymer/polymer-element.html">
+<link rel="import" href="../../../polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="../../action-emitter.html">
+<link rel="import" href="../../state-aware.html">
+
+<link rel="import" href="todo-styles.html">
+
+<dom-module id="todo-footer">
+  <template>
+    <style include="todo-styles">
+      .filters li a[selected] {
+        border-color: rgba(175, 47, 47, 0.2);
+      }
+    </style>
+
+    <footer class="footer">
+      <span class="todo-count">
+        <strong>[[state.activeCount]]</strong>
+        item<span hidden$="[[isEqual(state.activeCount, 1)]]">s</span> left
+      </span>
+      <ul class="filters">
+        <li>
+          <a selected$="[[!filterBy]]" href="#/">All</a>
+        </li>
+        <li>
+          <a selected$="[[isEqual(filterBy, 'active')]]" href="#/active">Active</a>
+        </li>
+        <li>
+          <a selected$="[[isEqual(filterBy, 'completed')]]" href="#/completed">Completed</a>
+        </li>
+      </ul>
+      <!-- Hidden if no completed items are left -->
+      <template is="dom-if" if="[[completedCount]]">
+        <button class="clear-completed" on-tap="onClearCompletedButtonTap">Clear completed</button>
+      </template>
+    </footer>
+
+  </template>
+  <script>
+    class TodoFooter extends Polymer.GestureEventListeners(UniFlow.ActionEmitter(UniFlow.StateAware(Polymer.Element))) {
+
+      static get is() {
+        return 'todo-footer';
+      }
+
+      static get properties() {
+        return {
+          filterBy: String,
+          completedCount: {
+            type: Number,
+            computed: 'getCompletedCount(state.todoList.length, state.activeCount)'
+          }
+        }
+      }
+
+      isEqual(val1, val2) {
+        return val1 == val2;
+      }
+
+      getCompletedCount(totalCount, activeCount) {
+        return totalCount - activeCount;
+      }
+
+      onClearCompletedButtonTap() {
+        this.emitAction({
+          type: todo.actions.CLEAR_COMPLETED
+        })
+      }
+    }
+
+    customElements.define(TodoFooter.is, TodoFooter);
+  </script>
+</dom-module>

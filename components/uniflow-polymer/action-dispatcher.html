@@ -14,91 +14,88 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="state-aware.html">
 <link rel="import" href="state-mutator.html">
 
 
-<script type="text/javascript" type="text/ecmascript-6">
-
+<script type="text/javascript">
   var UniFlow = window.UniFlow || {};
 
-/**
- Use UniFlow.ActionDispatcher for non-visual elements that process actions emitted by visual
- elements. Action dispatchers usually placed at the application level. Each action dispatcher
- element gets a chance to process the action in the order the elements are present in the
- DOM tree. It is important that action dispatcher elements get two-way data binding to
- application state as follows:
+  /**
+   Use UniFlow.ActionDispatcher for non-visual elements that process actions emitted by visual
+   elements. Action dispatchers usually placed at the application level. Each action dispatcher
+   element gets a chance to process the action in the order the elements are present in the
+   DOM tree. It is important that action dispatcher elements get two-way data binding to
+   application state as follows:
 
-    <action-dispatcher state="{{state}}"></action-dispatcher>
+   <action-dispatcher state="{{state}}"></action-dispatcher>
 
- Action dispatcher elements can include nested action dispatchers, so you can have a
- hierarchical organization of action dispatchers.
+   Action dispatcher elements can include nested action dispatchers, so you can have a
+   hierarchical organization of action dispatchers.
 
- ### Example:
+   ### Example:
 
- #### HTML:
+   #### HTML:
 
-    <dom-module id="parent-dispatcher">
-      <template>
-        <child-dispatcher-a state="{{state}}"></child-dispatcher-a>
-        <child-dispatcher-b state="{{state}}"></child-dispatcher-b>
-      </template>
-    </dom-module>
+   <dom-module id="parent-dispatcher">
+   <template>
+   <child-dispatcher-a state="{{state}}"></child-dispatcher-a>
+   <child-dispatcher-b state="{{state}}"></child-dispatcher-b>
+   </template>
+   </dom-module>
 
- #### JavaScript:
+   #### JavaScript:
+   class ParentDispatcher extends UniFlow.ActionDispatcher(Polymer.Element) {
+         static get is() { return 'parent-dispatcher'; }
 
-     Polymer({
-       is: 'parent-dispatcher',
+         MY_ACTION(detail) {
+           // do MY_ACTION processing here
+           // return false if you want to prevent other action dispatchers from
+           // further processing of this action
+         };
+       }
 
-       behaviors: [
-         UniFlow.ActionDispatcher
-       ],
+   customElements.define(ParentDispatcher.is, ParentDispatcher);
 
-       MY_ACTION(detail) {
-         // do MY_ACTION processing here
-         // return false if you want to prevent other action dispatchers from
-         // further processing of this action
-       };
-     });
-
- @polymerBehavior UniFlow.ActionDispatcher
-*/
-
-  UniFlow.ActionDispatcherImpl = {
-
-    hostAttributes: {
-      'action-dispatcher': true
-    },
-
-    /**
-     * Dispatches action by invoking the method with the name that matches
-     * action type (`detail.type`) passing detail object as a parameter;
-     * also selects all children action dispatchers in the element's DOM tree and
-     * invokes dispatchAction method on them. False returned by an action dispatcher method
-     * results in dispatchAction method returning false (which in turn stops further processing
-     * of the action by other action dispatchers).
-     *
-     * @param {{type: string}} detail
-     * @return {boolean}
-     */
-    dispatchAction(detail) {
-      if (this[detail.type] && typeof this[detail.type] === 'function') {
-        if (this[detail.type](detail) === false) {
-          return false;
+   @polymer
+   @mixinFunction
+   @appliesMixin UniFlow.StateMutator
+   */
+  UniFlow.ActionDispatcher = Polymer.dedupingMixin((base) =>
+      class extends UniFlow.StateMutator(base) {
+        static get properties() {
+          return {
+            actionDispatcher: {
+              type: Boolean,
+              value: true,
+              reflectToAttribute: true
+            }
+          }
         }
-      }
-      return Polymer.dom(this.root).querySelectorAll('[action-dispatcher]')
-          .every((element) => element.dispatchAction(detail) !== false);
-    }
 
-  };
+        /**
+         * Dispatches action by invoking the method with the name that matches
+         * action type (`detail.type`) passing detail object as a parameter;
+         * also selects all children action dispatchers in the element's DOM tree and
+         * invokes dispatchAction method on them. False returned by an action dispatcher method
+         * results in dispatchAction method returning false (which in turn stops further processing
+         * of the action by other action dispatchers).
+         *
+         * @param {{type: string}} detail
+         * @return {boolean}
+         */
+        dispatchAction(detail) {
+          if (this[detail.type] && typeof this[detail.type] === 'function') {
+            if (this[detail.type](detail) === false) {
+              return false;
+            }
+          }
+          //dispatch action on nested dispatchers
+          var nodes = this.root ? this.root.querySelectorAll('[action-dispatcher]') : [];
+          return Array.prototype.every.call(nodes,
+              (element) => element.dispatchAction(detail) !== false);
+        }
 
-  /** @polymerBehavior */
-  UniFlow.ActionDispatcher = [
-    UniFlow.StateAware,
-    UniFlow.StateMutator,
-    UniFlow.ActionDispatcherImpl
-  ];
-
+      });
 </script>

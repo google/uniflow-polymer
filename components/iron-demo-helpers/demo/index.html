@@ -16,71 +16,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-
-  <link rel="import" href="../../paper-styles/color.html">
-  <link rel="import" href="../../iron-flex-layout/iron-flex-layout.html">
-  <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="../../polymer/polymer.html">
   <link rel="import" href="../demo-snippet.html">
   <link rel="import" href="../demo-pages-shared-styles.html">
+  <link rel="import" href="simple-button.html">
 
-  <style is="custom-style" include="demo-pages-shared-styles">
-    .vertical-section-container {
-      max-width: 500px;
-    }
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </custom-style>
 
-    paper-checkbox {
-      display: block;
-      margin-right: 24px;
-    }
-  </style>
 </head>
 <body unresolved>
-  <div class="vertical-section-container centered">
+  <div class="centered">
     <h4>Demo of a native element</h4>
-    <demo-snippet class="centered-demo">
+    <demo-snippet>
       <template>
         <input type="date">
       </template>
     </demo-snippet>
 
-    <h4>Demo of a custom element</h4>
+    <h4>Demo of a native element with styles</h4>
     <demo-snippet class="centered-demo">
       <template>
-        <paper-checkbox>Checkbox</paper-checkbox>
-        <paper-checkbox checked>Checkbox</paper-checkbox>
-      </template>
-    </demo-snippet>
-
-    <h4>Demo of an element with custom styles</h4>
-    <demo-snippet class="centered-demo small-text">
-      <template>
-        <style is="custom-style">
-          paper-checkbox.blue {
-            --paper-checkbox-checked-color: var(--paper-blue-500);
-            --paper-checkbox-checked-ink-color: var(--paper-blue-500);
-            --paper-checkbox-unchecked-color: var(--paper-blue-900);
-            --paper-checkbox-unchecked-ink-color: var(--paper-blue-900);
-            --paper-checkbox-label-color: var(--paper-blue-500);
-          }
-          paper-checkbox.red {
-            --paper-checkbox-checked-color: var(--paper-red-500);
-            --paper-checkbox-checked-ink-color: var(--paper-red-500);
-            --paper-checkbox-unchecked-color: var(--paper-red-900);
-            --paper-checkbox-unchecked-ink-color: var(--paper-red-900);
-            --paper-checkbox-label-color: var(--paper-red-500);
+        <style>
+          .custom {
+            border: transparent;
+            border-bottom: 1px solid grey;
+            font-style: italic;
           }
         </style>
-
-        <paper-checkbox class="blue">Checkbox</paper-checkbox>
-        <paper-checkbox checked class="red">Checkbox</paper-checkbox>
+        <input type="date" class="custom">
       </template>
     </demo-snippet>
 
-    <h4>Demo of an element with bindings</h4>
-    <demo-snippet class="centered-demo small-text">
-      <template is="dom-bind">
-        <paper-checkbox checked="[[active]]">One-Way Binding</paper-checkbox>
-        <paper-checkbox checked="{{active}}">Two-Way Binding</paper-checkbox>
+    <h4>Demo of a custom element with styles</h4>
+    <demo-snippet class="centered-demo">
+      <template>
+        <custom-style>
+          <style is="custom-style">
+            .styled {
+              --button-border: #e91e63;
+              --button-background: #e6ee9c;
+              color: #e91e63;
+            }
+          </style>
+        </custom-style>
+        <simple-button value="unstyled"></simple-button>
+        <simple-button value="styled" class="styled"></simple-button>
       </template>
     </demo-snippet>
   </div>
