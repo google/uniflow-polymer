@@ -42,17 +42,23 @@ limitations under the License.
     </script>
   </dom-module>
 
+  <test-fixture id="basic">
+    <template>
+      <list-view-test list="[[list]]">
+      </list-view-test>
+    </template>
+  </test-fixture>
+
   <script>
     'use strict';
 
     suite('UniFlow.ListView', () => {
 
-      let listl, listView;
+      let listView;
 
       setup(() => {
-        listView = document.createElement("list-view-test");
-        listView.list = []; 
-        document.body.appendChild(listView);
+        listView = fixture('basic');
+        listView.set('list', []);
       });
 
       test('is ok', () => {

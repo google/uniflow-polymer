@@ -92,29 +92,12 @@ limitations under the License.
         ]
       }
 
-      constructor() {
-        super();
-        
-        this.onDispatchAction_bound = this.onDispatchAction_.bind(this);
-      }
-
-      connectedCallback() {
-        super.connectedCallback();       
-        window.addEventListener("dispatch-action", this.onDispatchAction_bound)
-      }
-
-      disconnectedCallback() {
-        super.disconnectedCallback();
-        window.removeEventListener("dispatch-action", this.onDispatchAction_bound);
-      }
-
       /**
        * Application state listens to dispatch-action method and invokes
        * dispatchAction method on itself (which in turn invokes dispatchAction
        * on all action dispatchers declared within application element).
        *
        * @param {!Event} event
-       * @param {!Object} detail
        * @private
        */
       onDispatchAction_(event) {
@@ -168,11 +151,12 @@ limitations under the License.
 
       /**
        * Sets application.element value to this element (so all state-aware elements
-       * have access to application element).
+       * have access to application element). Registers event listener to dispatch-action event.
        */
       ready() {
         super.ready();
         this.set('application.element', this);
+        this.addEventListener('dispatch-action', (event) => this.onDispatchAction_(event));
       }
 
     });

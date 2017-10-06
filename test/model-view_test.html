@@ -36,13 +36,17 @@ limitations under the License.
         static get is() {
           return 'model-view-test';
         }
-        
+
         constructor() {
           super();
-          this.validation = {
+          this._validation = {
             'foo': (value) => !value ? 'bad foo' : '',
             'xxx': (value) => value == 'yyy' ? 123 : ''
-          };
+          }
+        }
+
+        get validation() {
+          return this._validation;
         }
         
         get saveAction() {
@@ -58,6 +62,13 @@ limitations under the License.
     </script>
   </dom-module>
 
+  <test-fixture id="basic">
+    <template is="dom-template">
+      <model-view-test>
+      </model-view-test>
+    </template>
+  </test-fixture>
+
   <script>
     'use strict';
 
@@ -66,15 +77,10 @@ limitations under the License.
       let modelView, model, status;
 
       setup(() => {
-        modelView = document.createElement("model-view-test");
-        document.body.appendChild(modelView);
-
-        model = {
-          foo: 'bar'
-        };
+        model = {foo: 'bar'};
         status = {};
-        
-        modelView.model = model;
+        modelView = fixture('basic');
+        modelView.set('model', model);
       });
 
       test('is ok', () => {
@@ -127,7 +133,7 @@ limitations under the License.
       });
 
       test('validates model when validation not specified', () => {
-        modelView.validation = undefined;
+        modelView._validation = undefined;
         expect(modelView.validateModel()).to.be.true;
       });
 

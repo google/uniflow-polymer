@@ -30,59 +30,59 @@ limitations under the License.
 
 <body>
 
-  <dom-module id="state-aware-test">
-    <script>
-      class StateAwareTest extends UniFlow.StateAware(Polymer.Element) {
-        static get is() {
-          return 'state-aware-test';
-        }
-      }
-
-      customElements.define(StateAwareTest.is, StateAwareTest);
-    </script>
-  </dom-module>
-
-  <test-fixture id="basic">
-    <template is="dom-template">
-      <state-aware-test>
-      </state-aware-test>
-    </template>
-  </test-fixture>
-
+<dom-module id="state-aware-test">
   <script>
-    'use strict';
+    class StateAwareTest extends UniFlow.StateAware(Polymer.Element) {
+      static get is() {
+        return 'state-aware-test';
+      }
+    }
 
-    suite('UniFlow.StateAware', () => {
-
-      let stateAware;
-
-      setup(() => {
-        stateAware = fixture('basic');
-      });
-
-      test('is ok', () => {
-        expect(stateAware).to.be.ok;
-      });
-
-      test('added to application.stateAwareElements', () => {
-        expect(stateAware.get('application.stateAwareElements')).to.deep.equal(
-          [stateAware]);
-      });
-
-      test('removed from application.stateAwareElements', () => {
-        stateAware.parentNode.removeChild(stateAware);
-        expect(stateAware.get('application.stateAwareElements'))
-          .to.deep.equal([]);
-      });
-
-      test('added to application.stateAwareElements', () => {
-        sinon.stub(stateAware, 'get').withArgs('application.element')
-          .returns('my-app');
-        expect(stateAware.getApplication()).to.equal('my-app');
-      });
-
-    });
+    customElements.define(StateAwareTest.is, StateAwareTest);
   </script>
+</dom-module>
+
+<test-fixture id="basic">
+  <template is="dom-template">
+    <state-aware-test>
+    </state-aware-test>
+  </template>
+</test-fixture>
+
+<script>
+  'use strict';
+
+  suite('UniFlow.StateAware', () => {
+
+    let stateAware;
+
+    setup(() => {
+      stateAware = fixture('basic');
+    });
+
+    test('is ok', () => {
+      expect(stateAware).to.be.ok;
+    });
+
+    test('added to application.stateAwareElements', () => {
+      expect(stateAware.get('application.stateAwareElements')).to.deep.equal(
+          [stateAware]);
+    });
+
+    test('removed from application.stateAwareElements', () => {
+      stateAware.parentNode.removeChild(stateAware);
+      expect(stateAware.get('application.stateAwareElements'))
+          .to.deep.equal([]);
+    });
+
+    test('added to application.stateAwareElements', () => {
+      sinon.stub(stateAware, 'get').withArgs('application.element')
+          .returns('my-app');
+      expect(stateAware.getApplication()).to.equal('my-app');
+    });
+
+  });
+</script>
 
 </body>
 

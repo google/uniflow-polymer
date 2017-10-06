@@ -29,7 +29,7 @@ limitations under the License.
    DOM tree. It is important that action dispatcher elements get two-way data binding to
    application state as follows:
 
-      <action-dispatcher state="{{state}}"></action-dispatcher>
+   <action-dispatcher state="{{state}}"></action-dispatcher>
 
    Action dispatcher elements can include nested action dispatchers, so you can have a
    hierarchical organization of action dispatchers.
@@ -38,15 +38,15 @@ limitations under the License.
 
    #### HTML:
 
-      <dom-module id="parent-dispatcher">
-        <template>
-          <child-dispatcher-a state="{{state}}"></child-dispatcher-a>
-          <child-dispatcher-b state="{{state}}"></child-dispatcher-b>
-        </template>
-      </dom-module>
+   <dom-module id="parent-dispatcher">
+   <template>
+   <child-dispatcher-a state="{{state}}"></child-dispatcher-a>
+   <child-dispatcher-b state="{{state}}"></child-dispatcher-b>
+   </template>
+   </dom-module>
 
    #### JavaScript:
-       class ParentDispatcher extends UniFlow.ActionDispatcher(Polymer.Element) {
+   class ParentDispatcher extends UniFlow.ActionDispatcher(Polymer.Element) {
          static get is() { return 'parent-dispatcher'; }
 
          MY_ACTION(detail) {
@@ -56,55 +56,46 @@ limitations under the License.
          };
        }
 
-       customElements.define(ParentDispatcher.is, ParentDispatcher);
+   customElements.define(ParentDispatcher.is, ParentDispatcher);
 
    @polymer
    @mixinFunction
    @appliesMixin UniFlow.StateMutator
-  */
+   */
   UniFlow.ActionDispatcher = Polymer.dedupingMixin((base) =>
-    class extends UniFlow.StateMutator(base) {
-      static get properties() {
-        return {
-          actionDispatcher: {
-            type: Boolean,
-            value: true,
-            reflectToAttribute: true
-          }
-        }
-      }
-
-      /**
-       * Dispatches action by invoking the method with the name that matches
-       * action type (`detail.type`) passing detail object as a parameter;
-       * also selects all children action dispatchers in the element's DOM tree and
-       * invokes dispatchAction method on them. False returned by an action dispatcher method
-       * results in dispatchAction method returning false (which in turn stops further processing
-       * of the action by other action dispatchers).
-       *
-       * @param {{type: string}} detail
-       * @return {boolean}
-       */
-      dispatchAction(detail) {
-        if (this[detail.type] && typeof this[detail.type] === 'function') {
-          if (this[detail.type](detail) === false) {
-            return false;
+      class extends UniFlow.StateMutator(base) {
+        static get properties() {
+          return {
+            actionDispatcher: {
+              type: Boolean,
+              value: true,
+              reflectToAttribute: true
+            }
           }
         }
 
-        var result = true;
-
-        //dispatch action on nested dispatchers
-        if (this.root) {
-          var nodes = this.root.querySelectorAll('[action-dispatcher]');
-
-          for (var node of nodes) {
-            result = result & node.dispatchAction(detail);
+        /**
+         * Dispatches action by invoking the method with the name that matches
+         * action type (`detail.type`) passing detail object as a parameter;
+         * also selects all children action dispatchers in the element's DOM tree and
+         * invokes dispatchAction method on them. False returned by an action dispatcher method
+         * results in dispatchAction method returning false (which in turn stops further processing
+         * of the action by other action dispatchers).
+         *
+         * @param {{type: string}} detail
+         * @return {boolean}
+         */
+        dispatchAction(detail) {
+          if (this[detail.type] && typeof this[detail.type] === 'function') {
+            if (this[detail.type](detail) === false) {
+              return false;
+            }
           }
+          //dispatch action on nested dispatchers
+          var nodes = this.root ? this.root.querySelectorAll('[action-dispatcher]') : [];
+          return Array.prototype.every.call(nodes,
+              (element) => element.dispatchAction(detail) !== false);
         }
 
-        return result;
-      }
-
-    });
+      });
 </script>

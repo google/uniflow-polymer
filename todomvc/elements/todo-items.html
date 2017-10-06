@@ -8,7 +8,7 @@
 <dom-module id="todo-items">
   <template>
     <style include="todo-styles">
-       :host {
+      :host {
         display: block;
       }
 
@@ -32,7 +32,7 @@
     </section>
   </template>
   <script>
-    class TodoItems extends UniFlow.ListView(Polymer.Element) {
+    class TodoItems extends UniFlow.ListView(UniFlow.StateAware(Polymer.Element)) {
       static get is() {
         return 'todo-items';
       }
